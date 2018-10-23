@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RefreshKit_Example' do
+  pod 'RefreshKit', :path => '../'
+
+  target 'RefreshKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
