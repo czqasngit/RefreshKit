@@ -7,24 +7,50 @@
 //
 
 import UIKit
+import RefreshKit
 
-class ViewController: UIViewController {
+class MyRefreshBasic: RefreshBasic {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let label = UILabel(frame: .init(x: 0, y: 0, width: 100, height: 30))
+        label.textColor = UIColor.orange
+        label.text = "刷新"
+        self.addSubview(label)
+    }
     
-    let tableView = UITableView()
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+class MyTableView: UITableView {
+    deinit {
+        print("MyTableView deinit")
+    }
+}
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    let tableView = MyTableView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "KVOObject Test"
         self.view.addSubview(tableView)
-        tableView.frame = self.view.bounds
-        let header = UIView(frame: CGRect(x: 0, y: -100, width: self.view.frame.size.width, height: 50))
-        header.backgroundColor = UIColor.orange
-        tableView.insertSubview(header, at: 0)
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.backgroundColor = UIColor.yellow
+        let refreshBasic = MyRefreshBasic(frame: CGRect.init(x: 0, y: -100, width: self.view.frame.size.width, height: 100))
+        refreshBasic.backgroundColor = UIColor.purple
+        self.tableView.refresh.header = refreshBasic
         
-        self.tableView.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.new, context: nil)
     }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print(change)
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
     }
-    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        cell.textLabel?.text = "第 \(indexPath.row) 行"
+        return cell
+    }
 }
 
