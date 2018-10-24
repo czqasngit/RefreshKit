@@ -10,7 +10,7 @@ import Foundation
 enum DraggingEvent {
     case none
     case perpare
-    case move(percent: Float)
+    case pulling(percent: Float)
     case complete
     
 }

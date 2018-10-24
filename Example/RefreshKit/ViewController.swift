@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.backgroundColor = UIColor.yellow
-        let refreshBasic = MyRefreshBasic(frame: CGRect.init(x: 0, y: -100, width: self.view.frame.size.width, height: 100))
+        let refreshBasic = MyRefreshBasic(frame: CGRect.init(x: 0, y: -60, width: self.view.frame.size.width, height: 60))
         refreshBasic.backgroundColor = UIColor.purple
         self.tableView.refresh.header = refreshBasic
         
