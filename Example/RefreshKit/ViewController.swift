@@ -9,19 +9,19 @@
 import UIKit
 import RefreshKit
 
-class MyRefreshBasic: RefreshBasic {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        let label = UILabel(frame: .init(x: (frame.size.width - 100) / 2, y: (frame.size.height - 30) / 2, width: 100, height: 30))
-        label.textColor = UIColor.orange
-        label.text = "刷新"
-        self.addSubview(label)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+//class MyRefreshBasic: RefreshBasic {
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        let label = UILabel(frame: .init(x: (frame.size.width - 100) / 2, y: (frame.size.height - 30) / 2, width: 100, height: 30))
+//        label.textColor = UIColor.orange
+//        label.text = "刷新"
+//        self.addSubview(label)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
 class MyTableView: UITableView {
     deinit {
         print("MyTableView deinit")
@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.backgroundColor = UIColor.yellow
-        let refreshBasic = MyRefreshBasic(frame: CGRect.init(x: 0, y: -60, width: self.view.frame.size.width, height: 60))
+        let refreshBasic = RefreshNormalHeader(frame: CGRect.init(x: 0, y: -60, width: self.view.frame.size.width, height: 60))
         refreshBasic.backgroundColor = UIColor.purple
         self.tableView.refresh.header = refreshBasic
         

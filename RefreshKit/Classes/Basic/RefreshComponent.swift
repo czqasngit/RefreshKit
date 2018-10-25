@@ -8,10 +8,10 @@
 import Foundation
 
 
-open class RefreshComponent: UIView {
+public class RefreshComponent: UIView {
     
-    var event: DraggingEvent = .none
-    var basicOffsetY: CGFloat = 0
+    
+    
     
     deinit {
         print("RefreshComponent deinit")
@@ -20,40 +20,17 @@ open class RefreshComponent: UIView {
         guard let scrollView = self.superview as? UIScrollView else {
             fatalError("Superview is not UIScrollView")
         }
-        scrollView.observe(forKeyPath: "contentOffset") {[weak scrollView] (object, keyPath, change, context) in
-            guard let scrollView = scrollView else { return }
+        scrollView.observe(forKeyPath: "contentOffset") { (object, keyPath, change, context) in
             guard let value = change?[NSKeyValueChangeKey.newKey],
                   let point = value as? CGPoint else { return }
-            self.initializeBasicOffsetYIfNeed(point, scrollView)
-            self.handleDragging(point, scrollView)
+            self.dragging(point)
         }
     }
     
-    private func initializeBasicOffsetYIfNeed(_ point: CGPoint, _ scrollView: UIScrollView) {
-        if self.basicOffsetY == 0 && !scrollView.isDragging {
-            self.basicOffsetY = abs(point.y)
-        }
+    public func dragging(_ point: CGPoint) {
+        fatalError("Implement in subclass.")
     }
-    private func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
-        if scrollView.isDragging {
-            let h = self.frame.size.height
-            let offsetY = abs(point.y) - self.basicOffsetY
-            if offsetY < h / 2 {
-                self.event = .perpare
-            } else if (h / 2)..<(h) ~= offsetY {
-                self.event = .pulling(percent: Float((offsetY - h / 2) / (h / 2)))
-            } else {
-                self.event = .complete
-            }
-        } else {
-            switch self.event {
-            case .complete:
-                print("执行刷新...")
-                self.event = .none
-            default:
-                break
-            }
-        }
-    }
+    
+    
     
 }
