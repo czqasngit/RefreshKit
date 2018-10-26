@@ -24,6 +24,7 @@ public class RefreshComponent: UIView {
             guard let value = change?[NSKeyValueChangeKey.newKey],
                   let point = value as? CGPoint else { return }
             self.dragging(point)
+            print("\(point)")
         }
     }
     

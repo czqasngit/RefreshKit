@@ -14,13 +14,13 @@ public class RefreshBasic: RefreshComponent {
     
     private func initializeBasicOffsetYIfNeed(_ point: CGPoint, _ scrollView: UIScrollView) {
         if self.basicOffsetY == 0 && !scrollView.isDragging {
-            self.basicOffsetY = abs(point.y)
+            self.basicOffsetY = point.y
         }
     }
     private func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         if scrollView.isDragging {
             let h = self.frame.size.height
-            let offsetY = abs(point.y) - self.basicOffsetY
+            let offsetY = abs(point.y) - abs(self.basicOffsetY)
             if offsetY < h / 2 {
                 self.updateEvent(.perpare)
             } else if (h / 2)..<(h) ~= offsetY {
@@ -31,11 +31,21 @@ public class RefreshBasic: RefreshComponent {
         } else {
             switch self.event {
             case .complete:
-                print("执行刷新...")
+                scrollView.setContentOffset(.init(x: 0, y: self.basicOffsetY - self.frame.size.height), animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.execUpdate()
+                }
                 self.updateEvent(.none)
             default:
                 break
             }
+        }
+    }
+    public func execUpdate() {
+        print("执行刷新...")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            guard let scrollView = self.superview as? UIScrollView else { return }
+            scrollView.setContentOffset(.init(x: 0, y: self.basicOffsetY), animated: true)
         }
     }
     public func eventChanged(_ newEvent: DraggingEvent) {

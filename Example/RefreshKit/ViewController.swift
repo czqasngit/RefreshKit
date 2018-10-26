@@ -9,19 +9,6 @@
 import UIKit
 import RefreshKit
 
-//class MyRefreshBasic: RefreshBasic {
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        let label = UILabel(frame: .init(x: (frame.size.width - 100) / 2, y: (frame.size.height - 30) / 2, width: 100, height: 30))
-//        label.textColor = UIColor.orange
-//        label.text = "刷新"
-//        self.addSubview(label)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//}
 class MyTableView: UITableView {
     deinit {
         print("MyTableView deinit")
