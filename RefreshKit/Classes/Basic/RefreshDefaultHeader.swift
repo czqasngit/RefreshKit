@@ -1,5 +1,5 @@
 //
-//  RefreshNormalHeader.swift
+//  RefreshDefaultHeader.swift
 //  Pods-RefreshKit_Example
 //
 //  Created by legendry on 2018/10/25.
@@ -14,14 +14,13 @@ extension Date {
         return  "当前时间: \(formatter.string(from: Date()))"
     }
 }
-public class RefreshNormalHeader: RefreshBasic {
+public class RefreshDefaultHeader: RefreshView {
     
     var labelTime = UILabel()
     var labtlStatus = UILabel()
     
-    public override init(frame: CGRect) {
+    fileprivate override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.addSubview(labelTime)
         self.labelTime.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraint(NSLayoutConstraint.init(item: labelTime, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0))
@@ -53,6 +52,11 @@ public class RefreshNormalHeader: RefreshBasic {
         super.execUpdate()
         self.labelTime.text = Date.currentUpdateTime()
     }
-    
+}
 
+extension RefreshDefaultHeader {
+    static public func make() -> RefreshDefaultHeader {
+        let header = RefreshDefaultHeader(frame: .init(x: 0, y: -60, width: 100, height: 60))
+        return header
+    }
 }

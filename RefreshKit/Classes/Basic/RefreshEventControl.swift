@@ -1,5 +1,5 @@
 //
-//  RefreshBasic.swift
+//  RefreshEventControl.swift
 //  Pods-RefreshKit_Example
 //
 //  Created by legendry on 2018/10/24.
@@ -7,7 +7,32 @@
 
 import Foundation
 
-public class RefreshBasic: RefreshComponent {
+
+public enum DraggingEvent {
+    case none
+    case perpare
+    case pulling(percent: Float)
+    case complete
+}
+extension DraggingEvent: Equatable {
+    public static func == (lhs: DraggingEvent, rhs: DraggingEvent) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none):
+            return true
+        case (.perpare, .perpare):
+            return true
+        case (.complete, .complete):
+            return true
+        case (.pulling(_), .pulling(_)):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+
+public class RefreshEventControl: RefreshControl {
     
     fileprivate var event: DraggingEvent = .none
     var basicOffsetY: CGFloat = 0
@@ -43,10 +68,10 @@ public class RefreshBasic: RefreshComponent {
     }
     public func execUpdate() {
         print("执行刷新...")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            guard let scrollView = self.superview as? UIScrollView else { return }
-            scrollView.setContentOffset(.init(x: 0, y: self.basicOffsetY), animated: true)
-        }
+    }
+    public func stopRefresh() {
+        guard let scrollView = self.superview as? UIScrollView else { return }
+        scrollView.setContentOffset(.init(x: 0, y: self.basicOffsetY), animated: true)
     }
     public func eventChanged(_ newEvent: DraggingEvent) {
         

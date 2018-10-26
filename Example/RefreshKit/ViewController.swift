@@ -26,9 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.backgroundColor = UIColor.yellow
-        let refreshBasic = RefreshNormalHeader(frame: CGRect.init(x: 0, y: -60, width: self.view.frame.size.width, height: 60))
-        refreshBasic.backgroundColor = UIColor.purple
-        self.tableView.refresh.header = refreshBasic
+        self.tableView.refresh.header = RefreshDefaultHeader.make()
         
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

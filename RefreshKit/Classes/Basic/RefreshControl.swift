@@ -1,5 +1,5 @@
 //
-//  RefreshComponent.swift
+//  RefreshControl.swift
 //  Pods-RefreshKit_Example
 //
 //  Created by legendry on 2018/10/24.
@@ -8,13 +8,10 @@
 import Foundation
 
 
-public class RefreshComponent: UIView {
-    
-    
-    
+public class RefreshControl: UIView {
     
     deinit {
-        print("RefreshComponent deinit")
+        print("RefreshControl deinit")
     }
     public func addObserve() {
         guard let scrollView = self.superview as? UIScrollView else {
@@ -24,14 +21,10 @@ public class RefreshComponent: UIView {
             guard let value = change?[NSKeyValueChangeKey.newKey],
                   let point = value as? CGPoint else { return }
             self.dragging(point)
-            print("\(point)")
         }
     }
-    
     public func dragging(_ point: CGPoint) {
         fatalError("Implement in subclass.")
     }
-    
-    
     
 }
