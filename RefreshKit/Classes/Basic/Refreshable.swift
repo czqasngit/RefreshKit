@@ -19,15 +19,18 @@ extension Refreshable {
         return Refresh(self)
     }
 }
+let kHeader = UnsafeMutablePointer<UInt8>.allocate(capacity: 0)
+let kFooter = UnsafeMutablePointer<UInt8>.allocate(capacity: 0)
 extension Refresh where Base: UIScrollView {
-    public var header: RefreshView? {
+    public var header: RefreshHeaderControl? {
         set {
             if let _header = newValue {
                 self.base.addHeader(_header)
             }
+            objc_setAssociatedObject(self.base, kHeader, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return self.base.subviews.first as? RefreshView
+            return objc_getAssociatedObject(self.base, kHeader) as? RefreshHeaderControl
         }
     }
     public func stopRefresh() {
@@ -35,7 +38,7 @@ extension Refresh where Base: UIScrollView {
     }
 }
 extension UIScrollView: Refreshable {
-    public func addHeader(_ header: RefreshView) {
+    public func addHeader(_ header: RefreshHeaderControl) {
         self.insertSubview(header, at: 0)
         header.translatesAutoresizingMaskIntoConstraints = false
         header.addConstraint(.init(item: header, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: header.refreshHeight))

@@ -26,7 +26,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.backgroundColor = UIColor.yellow
-        self.tableView.refresh.header = RefreshDefaultHeader.make()
+        self.tableView.refresh.header = RefreshDefaultHeader.make {
+            print("执行刷新了...")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                self.tableView.refresh.header?.stopRefresh()
+            })
+        }
         
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

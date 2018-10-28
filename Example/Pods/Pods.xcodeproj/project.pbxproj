@@ -20,7 +20,9 @@
 		AC9EE300C8214D9EDDA441ED40CC07E9 /* Pods-RefreshKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A20A5B157657EA2309EEE902C2CBCA8E /* Pods-RefreshKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B643A25F3F497D0A141AD8A8C3788D3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		C13170D8A4DA9224CDE4FF49B48B7CB7 /* RefreshDefaultHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F08CE6230BD16761C127FA9ABF3E /* RefreshDefaultHeader.swift */; };
-		C3C1BFCF2182E64300C5582C /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1BFCE2182E64200C5582C /* RefreshView.swift */; };
+		C3C1BFCF2182E64300C5582C /* RefreshHeaderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1BFCE2182E64200C5582C /* RefreshHeaderControl.swift */; };
+		C3D5BE4F2185B09B00B3355E /* Refresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3D5BE4E2185B09B00B3355E /* Refresh.bundle */; };
+		C3D5BE502185B43C00B3355E /* Refresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3D5BE4E2185B09B00B3355E /* Refresh.bundle */; };
 		E43EB6FE14A7B85ABF35E5C5264D5814 /* RefreshKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B296D075BF7216F374172B32FCCD72 /* RefreshKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -48,7 +50,7 @@
 		1850EE3D0A8EE12C08455BB286EFB144 /* RefreshKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RefreshKit.xcconfig; sourceTree = "<group>"; };
 		2C809C0729323656CD58BA1819844339 /* Pods-RefreshKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RefreshKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2DBF3F0D6251DF012E82F3A48A2EB54B /* Pods-RefreshKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Tests-Info.plist"; sourceTree = "<group>"; };
-		2FAA68B52180659D5C84D3A9C2E66E62 /* RefreshKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RefreshKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2FAA68B52180659D5C84D3A9C2E66E62 /* RefreshKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RefreshKit.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		30BA290CFC370779CA0B5231F358250E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		315B77B3CC204CDA01A74EE12DB6BA50 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		369E41C4BB114B9D21B80137942515D6 /* KVOBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KVOBlock.swift; path = RefreshKit/Classes/Basic/KVOBlock.swift; sourceTree = "<group>"; };
@@ -69,7 +71,8 @@
 		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B681D1014702A8C91097D5B19A4635A5 /* Pods-RefreshKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Example-Info.plist"; sourceTree = "<group>"; };
 		B80A15B77F3ECF0BF2195E736F2083ED /* Pods-RefreshKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RefreshKit_Tests-umbrella.h"; sourceTree = "<group>"; };
-		C3C1BFCE2182E64200C5582C /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshView.swift; path = RefreshKit/Classes/Basic/RefreshView.swift; sourceTree = "<group>"; };
+		C3C1BFCE2182E64200C5582C /* RefreshHeaderControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshHeaderControl.swift; path = RefreshKit/Classes/Basic/RefreshHeaderControl.swift; sourceTree = "<group>"; };
+		C3D5BE4E2185B09B00B3355E /* Refresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Refresh.bundle; path = RefreshKit/Classes/Basic/Refresh.bundle; sourceTree = "<group>"; };
 		CA2CD729FEF11307F6CCA798BFAB972F /* RefreshKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RefreshKit.modulemap; sourceTree = "<group>"; };
 		CE85F08CE6230BD16761C127FA9ABF3E /* RefreshDefaultHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RefreshDefaultHeader.swift; path = RefreshKit/Classes/Basic/RefreshDefaultHeader.swift; sourceTree = "<group>"; };
 		D08E7F93B8B6F57FE6CCE411B0A6E37A /* Pods-RefreshKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RefreshKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -223,11 +226,12 @@
 		FD34F403C3EF3CAB2466F295E013B48C /* RefreshKit */ = {
 			isa = PBXGroup;
 			children = (
-				C3C1BFCE2182E64200C5582C /* RefreshView.swift */,
+				C3D5BE4E2185B09B00B3355E /* Refresh.bundle */,
 				369E41C4BB114B9D21B80137942515D6 /* KVOBlock.swift */,
 				68BB91A8960B569B52E9E538C858ADF4 /* Refreshable.swift */,
-				77020616252484D4951A3E58F90ADD79 /* RefreshEventControl.swift */,
 				1094229F78E78FE1604EC31A65E7A721 /* RefreshControl.swift */,
+				77020616252484D4951A3E58F90ADD79 /* RefreshEventControl.swift */,
+				C3C1BFCE2182E64200C5582C /* RefreshHeaderControl.swift */,
 				CE85F08CE6230BD16761C127FA9ABF3E /* RefreshDefaultHeader.swift */,
 				FB9060AEAE41BE36E13A36E852D742C1 /* Pod */,
 				21D3B27083F4AA597A841C915D59D758 /* Support Files */,
@@ -360,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D5BE502185B43C00B3355E /* Refresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +379,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D5BE4F2185B09B00B3355E /* Refresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +411,7 @@
 				0E58C727D41C854FE4C599F2F22E527F /* RefreshEventControl.swift in Sources */,
 				9FB3701B2248CDE04155984EC2D68DC7 /* RefreshControl.swift in Sources */,
 				666531480A879E8C4620BDF29E6D2C58 /* RefreshKit-dummy.m in Sources */,
-				C3C1BFCF2182E64300C5582C /* RefreshView.swift in Sources */,
+				C3C1BFCF2182E64300C5582C /* RefreshHeaderControl.swift in Sources */,
 				C13170D8A4DA9224CDE4FF49B48B7CB7 /* RefreshDefaultHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
