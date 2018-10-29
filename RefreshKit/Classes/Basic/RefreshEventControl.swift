@@ -31,17 +31,18 @@ extension DraggingEvent: Equatable {
     }
 }
 
-
+public typealias RefreshingBlock = () -> ()
 public class RefreshEventControl: RefreshControl {
     
     public var event: DraggingEvent = .none
     var basicOffsetY: CGFloat = 0
     var refreshingBlock: RefreshingBlock
+    var isRefreshing: Bool = false
+    
     
     public init(with refreshingBlock: @escaping RefreshingBlock) {
         self.refreshingBlock = refreshingBlock
         super.init(frame: .zero)
-        self.backgroundColor = UIColor.orange
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -55,8 +56,13 @@ public class RefreshEventControl: RefreshControl {
     public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         fatalError("Implement in subclass, don't call super.handleDragging")
     }
+    public func startRefresh() {
+        self.isRefreshing = true
+        self.parent.isScrollEnabled = false
+    }
     public func stopRefresh() {
-        fatalError("Implement in subclass, don't call super.handleDragging")
+        self.isRefreshing = false
+        self.parent.isScrollEnabled = true
     }
     public func refreshing() {
         self.refreshingBlock()
@@ -70,6 +76,7 @@ public class RefreshEventControl: RefreshControl {
     internal func updateEvent(_ newEvent: DraggingEvent) {
         guard self.event != newEvent else { return }
         self.event = newEvent
+        print("更新: \(self.event)")
         self.eventChanged(newEvent)
     }
     internal override func dragging(_ point: CGPoint) {

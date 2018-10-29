@@ -17,6 +17,7 @@ class MyTableView: UITableView {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let tableView = MyTableView()
+    var count: Int = 10
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "KVOObject Test"
@@ -25,22 +26,39 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.backgroundColor = UIColor.yellow
         self.tableView.refresh.header = RefreshDefaultHeader.make {
-            print("执行刷新了...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                self.count = 10
                 self.tableView.refresh.header?.stopRefresh()
+                self.tableView.reloadData()
+            })
+        }
+        self.tableView.refresh.footer = RefreshDefaultFooter.make {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                self.count += 10
+                self.tableView.reloadData()
+                self.tableView.refresh.footer?.stopRefresh()
             })
         }
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.tableView.refresh.header?.toggle()
+    }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return count
     }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.textLabel?.text = "第 \(indexPath.row) 行"
         return cell
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: .zero)
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
 }
 
