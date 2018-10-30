@@ -18,5 +18,10 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "RefreshKit/Classes/**/*"
+  "source_files": "RefreshKit/Classes/**/*",
+  "resource_bundles": {
+    "RefreshKit": [
+      "RefreshKit/Assets/*.png"
+    ]
+  }
 }

@@ -44,10 +44,15 @@ public class RefreshHeaderControl: RefreshEventControl {
         self.parent.refresh.footer?.isHidden = true
         self.parent.setContentOffset(.init(x: 0, y: self.basicOffsetY - self.frame.size.height), animated: true)
     }
+    public override func refreshing() {
+        super.refreshing()
+    }
     public override func stopRefresh() {
         super.stopRefresh()
-        self.parent.setContentOffset(.init(x: 0, y: self.basicOffsetY), animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        //防止调用reloadData后,contentOffset自动恢复到初始状态
+        self.parent.setContentOffset(.init(x: 0, y: self.basicOffsetY - self.frame.size.height), animated: false)
+        UIView.animate(withDuration: 0.25) {
+            self.parent.setContentOffset(.init(x: 0, y: self.basicOffsetY), animated: false)
             self.refreshCompleted()
         }
     }

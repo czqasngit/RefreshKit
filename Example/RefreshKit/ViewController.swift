@@ -20,27 +20,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var count: Int = 10
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "KVOObject Test"
+        self.title = "基础测试"
         self.view.addSubview(tableView)
         tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         tableView.delegate = self
         tableView.dataSource = self
+        self.automaticallyAdjustsScrollViewInsets = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.refresh.header = RefreshDefaultHeader.make {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.count = 10
-                self.tableView.refresh.header?.stopRefresh()
                 self.tableView.reloadData()
+                self.tableView.refresh.header?.stopRefresh()
+                self.tableView.refresh.footer?.resetNoMoreData()
             })
         }
         self.tableView.refresh.footer = RefreshDefaultFooter.make {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                self.count += 10
-                self.tableView.reloadData()
-                self.tableView.refresh.footer?.stopRefresh()
-            })
+            if self.count >= 20 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                    self.tableView.reloadData()
+                    self.tableView.refresh.footer?.noMoreData()
+                })
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                    self.count += 10
+                    self.tableView.reloadData()
+                    self.tableView.refresh.footer?.stopRefresh()
+                })
+            }
         }
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
