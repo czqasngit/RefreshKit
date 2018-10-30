@@ -22,7 +22,7 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
     let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     private override init(with refreshingBlock: @escaping RefreshingBlock) {
-        let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "Refresh", ofType: "bundle")!
+        let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
         self.imageArrow = UIImageView(image: UIImage(contentsOfFile: "\(refreshBundle)/arrow.png"))
         super.init(with: refreshingBlock)
         self.setup()
