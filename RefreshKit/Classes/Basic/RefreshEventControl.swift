@@ -14,6 +14,11 @@ public enum DraggingEvent {
     case pulling(percent: Float)
     case complete
 }
+public enum DraggingType {
+    case none
+    case header
+    case footer
+}
 extension DraggingEvent: Equatable {
     public static func == (lhs: DraggingEvent, rhs: DraggingEvent) -> Bool {
         switch (lhs, rhs) {
@@ -38,7 +43,7 @@ public class RefreshEventControl: RefreshControl {
     var basicOffsetY: CGFloat = 0
     var refreshingBlock: RefreshingBlock
     var isRefreshing: Bool = false
-    
+    var draggingType: DraggingType = .none
     
     public init(with refreshingBlock: @escaping RefreshingBlock) {
         self.refreshingBlock = refreshingBlock
@@ -54,7 +59,7 @@ public class RefreshEventControl: RefreshControl {
         }
     }
     public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
-        fatalError("Implement in subclass, don't call super.handleDragging")
+        
     }
     public func startRefresh() {
         self.isRefreshing = true
@@ -82,6 +87,17 @@ public class RefreshEventControl: RefreshControl {
     internal override func dragging(_ point: CGPoint) {
         let scrollView = self.parent
         self.initializeBasicOffsetYIfNeed(point, scrollView)
+        if point.y < self.basicOffsetY {
+            if self.draggingType == .none {
+                self.draggingType = .header
+            }
+        } else if point.y > self.basicOffsetY {
+            if self.draggingType == .none {
+                self.draggingType = .footer
+            }
+        } else {
+            self.draggingType = .none
+        }
         self.handleDragging(point, scrollView)
     }
 

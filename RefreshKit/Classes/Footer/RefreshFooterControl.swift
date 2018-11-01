@@ -11,6 +11,11 @@ public class RefreshFooterControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
     var hasMore: Bool = true
     var contentInset: UIEdgeInsets!
+    override var draggingType: DraggingType {
+        willSet {
+            self.isHidden =  newValue == .header
+        }
+    }
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
         self.isHidden = true
@@ -22,6 +27,8 @@ public class RefreshFooterControl: RefreshEventControl {
         }
     }
     override public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
+        super.handleDragging(point, scrollView)
+        guard self.draggingType == .footer else { return }
         guard self.hasMore else { return }
         if scrollView.isDragging {
             let h = self.frame.size.height

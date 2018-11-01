@@ -15,6 +15,10 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		C30A03A9218AA9B2009CD93E /* timg.gif in Resources */ = {isa = PBXBuildFile; fileRef = C30A03A8218AA9B2009CD93E /* timg.gif */; };
+		C30A03AB218AC647009CD93E /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03AA218AC647009CD93E /* GifViewController.swift */; };
+		C30A03AD218ACA4D009CD93E /* APNGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03AC218ACA4D009CD93E /* APNGViewController.swift */; };
+		C30A03AF218ACCC7009CD93E /* loading.apng in Resources */ = {isa = PBXBuildFile; fileRef = C30A03AE218ACCC7009CD93E /* loading.apng */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		87022A81708FCDF63DC57F2C /* Pods-RefreshKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Example/Pods-RefreshKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B039BA01F41E8E50A0A541A5 /* Pods-RefreshKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Tests/Pods-RefreshKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C30A03A8218AA9B2009CD93E /* timg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timg.gif; sourceTree = "<group>"; };
+		C30A03AA218AC647009CD93E /* GifViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
+		C30A03AC218ACA4D009CD93E /* APNGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APNGViewController.swift; sourceTree = "<group>"; };
+		C30A03AE218ACCC7009CD93E /* loading.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.apng; sourceTree = "<group>"; };
 		D16F65AA318A38DDEA9883CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F751CD0A0F33050F939E07AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FB29F418D86A3486D008CAD7 /* Pods-RefreshKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Example/Pods-RefreshKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,8 +112,12 @@
 		607FACD21AFB9204008FA782 /* Example for RefreshKit */ = {
 			isa = PBXGroup;
 			children = (
+				C30A03A8218AA9B2009CD93E /* timg.gif */,
+				C30A03AE218ACCC7009CD93E /* loading.apng */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				C30A03AA218AC647009CD93E /* GifViewController.swift */,
+				C30A03AC218ACA4D009CD93E /* APNGViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -245,7 +257,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30A03AF218ACCC7009CD93E /* loading.apng in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				C30A03A9218AA9B2009CD93E /* timg.gif in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -328,7 +342,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30A03AD218ACA4D009CD93E /* APNGViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				C30A03AB218AC647009CD93E /* GifViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +492,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RefreshKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -491,6 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RefreshKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

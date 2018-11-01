@@ -9,17 +9,27 @@ import UIKit
 
 public class RefreshHeaderControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
+    #error("上下拉有问题")
+    override var draggingType: DraggingType {
+        willSet {
+            self.isHidden =  newValue == .footer
+        }
+    }
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
     }
     override public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
+        super.handleDragging(point, scrollView)
+        guard self.draggingType == .header else { return }
         if scrollView.isDragging {
             let h = self.frame.size.height
             let offsetY = point.y - self.basicOffsetY
             if (-h / 2)..<0 ~= offsetY {
                 self.updateEvent(.perpare)
             } else if (-h)..<(-h / 2) ~= offsetY {
-                self.updateEvent(.pulling(percent: Float((offsetY - h / 2) / (h / 2))))
+                let percent = Float((abs(offsetY) - abs(h / 2)) / abs(h / 2))
+                self.updateEvent(.pulling(percent: percent))
+                self.pulling(percent: percent)
             } else if -h >= offsetY {
                 self.updateEvent(.complete)
             }
@@ -33,6 +43,9 @@ public class RefreshHeaderControl: RefreshEventControl {
                 break
             }
         }
+    }
+    public func pulling(percent: Float) {
+        
     }
     public func toggle() {
         guard !self.isRefreshing else { return }

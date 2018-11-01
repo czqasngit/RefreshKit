@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BerryPlant
 
 extension Date {
     static fileprivate func currentUpdateTime() -> String {
@@ -18,12 +19,13 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
     
     let labelTime = UILabel()
     let labtlStatus = UILabel()
-    var imageArrow: UIImageView
+    var icon: BerryAnimateImageView
     let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-    
-    private override init(with refreshingBlock: @escaping RefreshingBlock) {
-        let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
-        self.imageArrow = UIImageView(image: UIImage(contentsOfFile: "\(refreshBundle)/arrow.png"))
+    let imageProvider: BerryImageProvider
+    public init(with path: String, refreshingBlock: @escaping RefreshingBlock) {
+        let data = try! Data.init(contentsOf: URL(fileURLWithPath: path))
+        self.imageProvider = FindImageDecoder(with: data)
+        self.icon = BerryAnimateImageView(with: imageProvider, frame: .zero)
         super.init(with: refreshingBlock)
         self.setup()
     }
@@ -32,19 +34,20 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
         self.labelTime.textColor = UIColor(red: 0x99 / 255.0, green: 0x99 / 255.0, blue: 0x99 / 255.0, alpha: 1.0)
         self.labtlStatus.textColor = self.labelTime.textColor
         
-        self.addSubview(self.imageArrow)
-        self.imageArrow.translatesAutoresizingMaskIntoConstraints = false
-        self.imageArrow.addConstraint(.init(item: self.imageArrow, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.imageArrow.image?.size.width ?? 0))
-        self.imageArrow.addConstraint(.init(item: self.imageArrow, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.imageArrow.image?.size.height ?? 0))
-        self.addConstraint(.init(item: self.imageArrow, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 0.5, constant: 0))
-        self.addConstraint(.init(item: self.imageArrow, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0))
+        self.addSubview(self.icon)
+        self.icon.translatesAutoresizingMaskIntoConstraints = false
+        self.icon.contentMode = .scaleAspectFit
+        self.icon.addConstraint(.init(item: self.icon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.iconSize().width))
+        self.icon.addConstraint(.init(item: self.icon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.iconSize().height))
+        self.addConstraint(.init(item: self.icon, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 0.5, constant: 0))
+        self.addConstraint(.init(item: self.icon, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0))
         
         activity.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(activity)
         activity.addConstraint(.init(item: self.activity, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: activity.frame.size.width))
         activity.addConstraint(.init(item: self.activity, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: activity.frame.size.height))
-        self.addConstraint(.init(item: self.activity, attribute: .centerX, relatedBy: .equal, toItem: self.imageArrow, attribute: .centerX, multiplier: 1.0, constant: 0))
-        self.addConstraint(.init(item: self.activity, attribute: .centerY, relatedBy: .equal, toItem: self.imageArrow, attribute: .centerY, multiplier: 1.0, constant: 0))
+        self.addConstraint(.init(item: self.activity, attribute: .centerX, relatedBy: .equal, toItem: self.icon, attribute: .centerX, multiplier: 1.0, constant: 0))
+        self.addConstraint(.init(item: self.activity, attribute: .centerY, relatedBy: .equal, toItem: self.icon, attribute: .centerY, multiplier: 1.0, constant: 0))
         
         self.addSubview(self.labtlStatus)
         self.labtlStatus.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +62,7 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
         
         self.addSubview(labelTime)
         self.labelTime.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraint(NSLayoutConstraint.init(item: labelTime, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.imageArrow, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 10))
+        self.addConstraint(NSLayoutConstraint.init(item: labelTime, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.icon, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 10))
         self.addConstraint(NSLayoutConstraint.init(item: labelTime, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 5))
         labelTime.setContentHuggingPriority(UILayoutPriority.defaultLow, for: UILayoutConstraintAxis.horizontal)
         labelTime.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.horizontal)
@@ -71,28 +74,39 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func canRotateicon() -> Bool {
+        return true
+    }
+    func iconSize() -> CGSize {
+        return .init(width: 15, height: 40)
+    }
+    
     override public func eventChanged(_ newEvent: DraggingEvent) {
         super.eventChanged(newEvent)
         switch newEvent {
         case .complete:
             self.labtlStatus.text = "松开立即刷新"
-            UIView.animate(withDuration: 0.15) {
-                self.imageArrow.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi)
+            if canRotateicon() {
+                UIView.animate(withDuration: 0.15) {
+                    self.icon.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi)
+                }
             }
             self.activity.isHidden = true
-            self.imageArrow.isHidden = false
+            self.icon.isHidden = false
         case .perpare:
             self.labtlStatus.text = "下拉即可刷新"
-            self.imageArrow.transform = CGAffineTransform.init(rotationAngle: 0)
+            self.icon.transform = CGAffineTransform.init(rotationAngle: 0)
             self.activity.isHidden = true
-            self.imageArrow.isHidden = false
+            self.icon.isHidden = false
         case .pulling(_):
             self.labtlStatus.text = "下拉即可刷新"
-            UIView.animate(withDuration: 0.15) {
-                self.imageArrow.transform = CGAffineTransform.init(rotationAngle: 0)
+            if canRotateicon() {
+                UIView.animate(withDuration: 0.15) {
+                    self.icon.transform = CGAffineTransform.init(rotationAngle: 0)
+                }
             }
             self.activity.isHidden = true
-            self.imageArrow.isHidden = false
+            self.icon.isHidden = false
         default:
             break
         }
@@ -102,7 +116,7 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
         self.labtlStatus.text = "正在刷新..."
         self.activity.isHidden = false
         self.activity.startAnimating()
-        self.imageArrow.isHidden = true
+        self.icon.isHidden = true
     }
     public override func refreshCompleted() {
         super.refreshCompleted()
@@ -113,7 +127,8 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
 
 extension RefreshDefaultHeader {
     static public func make(_ refreshingBlock: @escaping RefreshingBlock) -> RefreshDefaultHeader {
-        let header = RefreshDefaultHeader(with: refreshingBlock)
+        let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
+        let header = RefreshDefaultHeader(with: "\(refreshBundle)/arrow@2x.png", refreshingBlock: refreshingBlock)
         return header
     }
 }

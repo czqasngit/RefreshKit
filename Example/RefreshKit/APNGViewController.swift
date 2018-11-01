@@ -9,25 +9,22 @@
 import UIKit
 import RefreshKit
 
-class MyTableView: UITableView {
-    deinit {
-        print("MyTableView deinit")
-    }
-}
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let tableView = MyTableView()
+    let tableView = UITableView()
     var count: Int = 10
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "基础测试"
+        self.title = "APNG Animate Test"
         self.view.addSubview(tableView)
         tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         tableView.delegate = self
         tableView.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.refresh.header = RefreshDefaultHeader.make {
+        let path = Bundle.main.path(forResource: "loading", ofType: "apng")!
+        self.tableView.refresh.header = RefreshAnimateHeader.make(path) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.count = 10
                 self.tableView.reloadData()
@@ -42,12 +39,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.tableView.refresh.footer?.noMoreData()
                 })
             } else {
-                print("执行刷新...")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                     self.count += 10
-                    print("..............")
                     self.tableView.reloadData()
-                    print("刷新...")
                     self.tableView.refresh.footer?.stopRefresh()
                 })
             }
@@ -55,7 +49,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        self.tableView.refresh.header?.toggle()
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return count
