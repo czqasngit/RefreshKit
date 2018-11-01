@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17D3D2790583686585916D62 /* RefreshKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = RefreshKit.podspec; path = ../RefreshKit.podspec; sourceTree = "<group>"; };
+		17D3D2790583686585916D62 /* RefreshKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RefreshKit.podspec; path = ../RefreshKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		43EB0D3B48D687AC783305CB /* Pods_RefreshKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefreshKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FE09EC4CA7C509BA3C938B /* Pods-RefreshKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Tests/Pods-RefreshKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F11A2E7DFF949D561241BE4 /* Pods_RefreshKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefreshKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +44,8 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		87022A81708FCDF63DC57F2C /* Pods-RefreshKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Example/Pods-RefreshKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B039BA01F41E8E50A0A541A5 /* Pods-RefreshKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Tests/Pods-RefreshKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D16F65AA318A38DDEA9883CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F751CD0A0F33050F939E07AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D16F65AA318A38DDEA9883CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F751CD0A0F33050F939E07AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FB29F418D86A3486D008CAD7 /* Pods-RefreshKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Example/Pods-RefreshKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -306,12 +306,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RefreshKit_Example/Pods-RefreshKit_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BerryPlant/BerryPlant.framework",
 				"${BUILT_PRODUCTS_DIR}/RefreshKit/RefreshKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BerryPlant.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RefreshKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
