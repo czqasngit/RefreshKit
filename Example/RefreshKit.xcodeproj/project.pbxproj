@@ -19,6 +19,7 @@
 		C30A03AB218AC647009CD93E /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03AA218AC647009CD93E /* GifViewController.swift */; };
 		C30A03AD218ACA4D009CD93E /* APNGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03AC218ACA4D009CD93E /* APNGViewController.swift */; };
 		C30A03AF218ACCC7009CD93E /* loading.apng in Resources */ = {isa = PBXBuildFile; fileRef = C30A03AE218ACCC7009CD93E /* loading.apng */; };
+		C30A03B4218BED3A009CD93E /* AutoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03B3218BED39009CD93E /* AutoFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		C30A03AA218AC647009CD93E /* GifViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
 		C30A03AC218ACA4D009CD93E /* APNGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APNGViewController.swift; sourceTree = "<group>"; };
 		C30A03AE218ACCC7009CD93E /* loading.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.apng; sourceTree = "<group>"; };
+		C30A03B3218BED39009CD93E /* AutoFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoFooter.swift; sourceTree = "<group>"; };
 		D16F65AA318A38DDEA9883CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F751CD0A0F33050F939E07AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FB29F418D86A3486D008CAD7 /* Pods-RefreshKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Example/Pods-RefreshKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				C30A03AA218AC647009CD93E /* GifViewController.swift */,
 				C30A03AC218ACA4D009CD93E /* APNGViewController.swift */,
+				C30A03B3218BED39009CD93E /* AutoFooter.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -344,6 +347,7 @@
 			files = (
 				C30A03AD218ACA4D009CD93E /* APNGViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				C30A03B4218BED3A009CD93E /* AutoFooter.swift in Sources */,
 				C30A03AB218AC647009CD93E /* GifViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

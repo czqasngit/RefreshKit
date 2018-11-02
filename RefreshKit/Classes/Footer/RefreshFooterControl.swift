@@ -7,6 +7,16 @@
 
 import UIKit
 
+extension UIEdgeInsets {
+    static func + (lhs: UIEdgeInsets, rhs: UIEdgeInsets) -> UIEdgeInsets {
+        var newInsets = UIEdgeInsets.zero
+        newInsets.top = lhs.top + rhs.top
+        newInsets.bottom = lhs.bottom + rhs.bottom
+        newInsets.right = lhs.right + rhs.right
+        newInsets.left = lhs.left + rhs.left
+        return newInsets
+    }
+}
 public class RefreshFooterControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
     var hasMore: Bool = true
@@ -19,8 +29,12 @@ public class RefreshFooterControl: RefreshEventControl {
     public override func layoutSubviews() {
         super.layoutSubviews()
         if self.contentInset == nil {
+            self.parent.contentInset = self.parent.contentInset + self.contentInsetOffset()
             self.contentInset = self.parent.contentInset
         }
+    }
+    func contentInsetOffset() -> UIEdgeInsets {
+        return .zero
     }
     override public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         super.handleDragging(point, scrollView)
@@ -77,22 +91,30 @@ public class RefreshFooterControl: RefreshEventControl {
             const.constant = contentSize.height
         }
     }
+    var reqiureFixOffsetOnLoading: Bool {
+        return true
+    }
     public override func startRefresh() {
-        let footerRefreshingOffsetY = (self.parent.contentSize.height - self.parent.frame.size.height) + self.frame.size.height
-        guard footerRefreshingOffsetY > 0 else { return }
-        self.parent.setContentOffset(.init(x: 0, y: footerRefreshingOffsetY ), animated: true)
+        super.startRefresh()
+        if reqiureFixOffsetOnLoading {
+            let footerRefreshingOffsetY = (self.parent.contentSize.height - self.parent.frame.size.height) + self.frame.size.height
+            guard footerRefreshingOffsetY > 0 else { return }
+            self.parent.setContentOffset(.init(x: 0, y: footerRefreshingOffsetY ), animated: true)
+        }
     }
     public override func refreshing() {
         self.parent.contentInset = self.contentInset
         super.refreshing()
     }
     public override func stopRefresh() {
+        super.stopRefresh()
         self.refreshCompleted()
     }
     public func resetNoMoreData() {
         self.hasMore = true
     }
     public func noMoreData() {
+        super.stopRefresh()
         self.hasMore = false
         var inset = self.contentInset!
         inset.bottom += self.frame.size.height

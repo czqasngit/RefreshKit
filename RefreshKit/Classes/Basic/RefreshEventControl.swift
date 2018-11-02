@@ -30,6 +30,11 @@ extension DraggingEvent: Equatable {
         }
     }
 }
+extension DraggingEvent {
+    static var refreshingText: String {
+        return "正在刷新..."
+    }
+}
 
 public typealias RefreshingBlock = () -> ()
 public class RefreshEventControl: RefreshControl {

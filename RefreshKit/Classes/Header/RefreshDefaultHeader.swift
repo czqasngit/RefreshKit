@@ -127,7 +127,7 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
     }
     public override func refreshing() {
         super.refreshing()
-        self.labtlStatus.text = "正在刷新..."
+        self.labtlStatus.text = DraggingEvent.refreshingText
         self.activity.isHidden = false
         self.activity.startAnimating()
         self.icon.isHidden = true

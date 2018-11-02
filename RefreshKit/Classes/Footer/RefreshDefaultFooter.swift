@@ -7,14 +7,32 @@
 
 import UIKit
 
-
+extension DraggingEvent {
+    var footerText: String {
+        switch self {
+        case .complete:
+            return "松开立即刷新"
+        case .pulling(_),
+             .perpare:
+            return "上拉即可刷新"
+        default:
+            return ""
+        }
+    }
+    static var refreshCompleted: String {
+        return "刷新完成..."
+    }
+    static var noMoreData: String {
+        return "没有更多数据了..."
+    }
+}
 public class RefreshDefaultFooter: RefreshFooterControl {
     
     let labtlStatus = UILabel()
     var imageArrow: UIImageView
     let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
-    private override init(with refreshingBlock: @escaping RefreshingBlock) {
+    internal override init(with refreshingBlock: @escaping RefreshingBlock) {
         let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
         self.imageArrow = UIImageView(image: UIImage(contentsOfFile: "\(refreshBundle)/arrow.png"))
         super.init(with: refreshingBlock)
@@ -59,7 +77,7 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         switch newEvent {
         case .complete:
             self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/arrow.png")
-            self.labtlStatus.text = "松开立即刷新"
+            self.labtlStatus.text = newEvent.footerText
             UIView.animate(withDuration: 0.15) {
                 self.imageArrow.transform = CGAffineTransform.init(rotationAngle: 0)
             }
@@ -67,13 +85,13 @@ public class RefreshDefaultFooter: RefreshFooterControl {
             self.imageArrow.isHidden = false
         case .perpare:
             self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/arrow.png")
-            self.labtlStatus.text = "上拉即可刷新"
+            self.labtlStatus.text = newEvent.footerText
             self.imageArrow.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi)
             self.activity.isHidden = true
             self.imageArrow.isHidden = false
         case .pulling(_):
             self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/arrow.png")
-            self.labtlStatus.text = "上拉即可刷新"
+            self.labtlStatus.text = newEvent.footerText
             UIView.animate(withDuration: 0.15) {
                 self.imageArrow.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi)
             }
@@ -85,18 +103,20 @@ public class RefreshDefaultFooter: RefreshFooterControl {
     }
     public override func refreshing() {
         super.refreshing()
-        self.labtlStatus.text = "正在刷新..."
+        self.labtlStatus.text = DraggingEvent.refreshingText
         self.activity.isHidden = false
         self.activity.startAnimating()
         self.imageArrow.isHidden = true
+        print("正在刷新...")
     }
     public override func stopRefresh() {
         super.stopRefresh()
-        self.labtlStatus.text = "刷新完成..."
+        self.labtlStatus.text = DraggingEvent.refreshCompleted
         self.activity.isHidden = true
         self.imageArrow.isHidden = false
         let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
         self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/animate.png")
+        print("停止刷新...")
     }
     public override func startRefresh() {
         super.startRefresh()
@@ -105,13 +125,14 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         super.noMoreData()
         self.activity.stopAnimating()
         self.activity.isHidden = true
-        self.labtlStatus.text = "没有更多数据了..."
+        self.labtlStatus.text = DraggingEvent.noMoreData
         
         
     }
     public override func refreshCompleted() {
         super.refreshCompleted()
         self.activity.stopAnimating()
+        print("刷新完成...")
     }
 }
 
