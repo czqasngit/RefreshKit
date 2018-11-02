@@ -17,7 +17,7 @@ class MyTableView: UITableView {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let tableView = MyTableView()
-    var count: Int = 10
+    var count: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "基础测试"
@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        self.tableView.refresh.header?.toggle()
+//        self.tableView.refresh.header?.toggle()
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return count
