@@ -17,6 +17,12 @@ public class RefreshAnimateHeader: RefreshDefaultHeader {
         super.setup()
         self.activity.removeFromSuperview()
     }
+    public override func eventChanged(_ newEvent: DraggingEvent) {
+        super.eventChanged(newEvent)
+        if let image = self.imageProvider.readImage(at: self.imageProvider.numberOfFrames() -  1) {
+            self.icon.image = UIImage(cgImage: image.image)
+        }
+    }
     public override func pulling(percent: Float) {
         super.pulling(percent: percent)
         if let image = self.imageProvider.readImage(at: Int(Float(self.imageProvider.numberOfFrames()) * percent)) {
