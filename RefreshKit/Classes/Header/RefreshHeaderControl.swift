@@ -56,6 +56,7 @@ public class RefreshHeaderControl: RefreshEventControl {
     public override func refreshing() {
         super.refreshing()
     }
+    ///restorePosition 为true,刷新完恢复到刷新前的位置,false刷新完位置不变
     public func stopRefresh( _ restorePosition: Bool = true) {
         super.stopRefresh()
         if restorePosition {
