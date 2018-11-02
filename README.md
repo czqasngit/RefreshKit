@@ -4,6 +4,9 @@
 [![License](https://img.shields.io/cocoapods/l/RefreshKit.svg?style=flat)](https://cocoapods.org/pods/RefreshKit)
 [![Platform](https://img.shields.io/cocoapods/p/RefreshKit.svg?style=flat)](https://cocoapods.org/pods/RefreshKit)
 
+![refreshkit](http://pba6dsu9x.bkt.clouddn.com/refreshkit.gif)
+
+
 ## Introduce
 A refresh kit for UIScrollView written by Swif
 Pull-up pull-down kit
