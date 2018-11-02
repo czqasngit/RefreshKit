@@ -17,7 +17,7 @@ class MyTableView: UITableView {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let tableView = MyTableView()
-    var count: Int = 0
+    var count: Int = 10
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "基础测试"

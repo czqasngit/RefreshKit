@@ -56,9 +56,12 @@ public class RefreshHeaderControl: RefreshEventControl {
     public override func refreshing() {
         super.refreshing()
     }
+    public override func stopRefresh() {
+        super.stopRefresh()
+        self.stopRefresh(true)
+    }
     ///restorePosition 为true,刷新完恢复到刷新前的位置,false刷新完位置不变
     public func stopRefresh( _ restorePosition: Bool = true) {
-        super.stopRefresh()
         if restorePosition {
             //防止调用reloadData后,contentOffset自动恢复到初始状态
             self.parent.setContentOffset(.init(x: 0, y: self.basicOffsetY - self.frame.size.height), animated: false)
