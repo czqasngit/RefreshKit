@@ -29,12 +29,13 @@
 		8D10E7714F416D5133860AC468A6E20B /* BerryAPNGStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAF9922B9FBE9D0EF42FE85C44EC09B /* BerryAPNGStructure.swift */; };
 		930E11D53E52975D6663CE47FD4E24C8 /* BerryDefaultDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF94B6F436A16B5F9B01758001C6651 /* BerryDefaultDecoder.swift */; };
 		A6BD041385FF0EE5E1D870873CAFE7DF /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147D90378917CDC4EAC1A5A4D5980DA /* String+Extensions.swift */; };
-		A7392FD92A7430F78B5FA2A234610C83 /* camera_prop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4029CD69E1D35C31E2B2339C1704B4C8 /* camera_prop@2x.png */; };
+		A7392FD92A7430F78B5FA2A234610C83 /* animate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4029CD69E1D35C31E2B2339C1704B4C8 /* animate@2x.png */; };
 		B14371AAE78DA02612A5DBFE65865DDE /* BerryPlant-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D5CC3A83DD899E6B32ABDC4C500CCC05 /* BerryPlant-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4D35E715C7D405602A23A2C09AFAD54 /* RefreshKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAD41AC02FBA6499CAC1013390146BF /* RefreshKit-dummy.m */; };
 		B7C3E9FBC34CAB70BF732CF4863DF6BE /* RefreshDefaultFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D5B937190E14FE5EA5FC5EF90D145 /* RefreshDefaultFooter.swift */; };
 		BA980B43101C54CBFF6395FB8C7B9EEA /* BerryTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA991BF77B346D496A2D0061D7C920 /* BerryTransaction.swift */; };
 		C15688968AE55DC492EA15CE7F772AF5 /* BerryImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1E874BEB589668D8B7CA52957F8373 /* BerryImageFormat.swift */; };
+		C30A03B2218BEA9E009CD93E /* RefreshFastFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03B0218BEA63009CD93E /* RefreshFastFooter.swift */; };
 		CBCC738B1BA81451126647B38E9A005B /* RefreshDefaultHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BE649B58FA06D26A8FCF3F5DD44169 /* RefreshDefaultHeader.swift */; };
 		CBD2C5AE426BF8C9B37EA6E8E7B1898B /* BerryPlant-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B14EE6FEB57332E71577AE839CA462 /* BerryPlant-dummy.m */; };
 		CCFD85024A1DA679AC5441CA194C4026 /* Pods-RefreshKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A20A5B157657EA2309EEE902C2CBCA8E /* Pods-RefreshKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -102,7 +103,7 @@
 		35AE03FA8EA033388800BE2F64375B9C /* BerryGIFDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryGIFDecoder.swift; path = BerryPlant/Classes/ImageDecode/Decoder/GIF/BerryGIFDecoder.swift; sourceTree = "<group>"; };
 		3C1B217F1A737A18384311ADD92365AD /* Pods-RefreshKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RefreshKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3FF94B6F436A16B5F9B01758001C6651 /* BerryDefaultDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryDefaultDecoder.swift; path = BerryPlant/Classes/ImageDecode/Decoder/Default/BerryDefaultDecoder.swift; sourceTree = "<group>"; };
-		4029CD69E1D35C31E2B2339C1704B4C8 /* camera_prop@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "camera_prop@2x.png"; path = "RefreshKit/Assets/camera_prop@2x.png"; sourceTree = "<group>"; };
+		4029CD69E1D35C31E2B2339C1704B4C8 /* animate@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "animate@2x.png"; path = "RefreshKit/Assets/animate@2x.png"; sourceTree = "<group>"; };
 		43986414F52FFC28FE31BFC90C3F2AF8 /* RefreshKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RefreshKit-Info.plist"; sourceTree = "<group>"; };
 		49BE649B58FA06D26A8FCF3F5DD44169 /* RefreshDefaultHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RefreshDefaultHeader.swift; sourceTree = "<group>"; };
 		4A1282F9042B62D90C85A56E69D11B82 /* Data+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Extensions.swift"; path = "BerryPlant/Classes/ImageDecode/Extensions/Data+Extensions.swift"; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		B80A15B77F3ECF0BF2195E736F2083ED /* Pods-RefreshKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RefreshKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		BA7942FE8CB94A4F707BFB56A86BFC90 /* BerryAnimateImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryAnimateImageView.swift; path = BerryPlant/Classes/ImageDecode/UI/BerryAnimateImageView.swift; sourceTree = "<group>"; };
 		C0188DA127BE8902612644EEB25C0E0D /* RefreshKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RefreshKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C30A03B0218BEA63009CD93E /* RefreshFastFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshFastFooter.swift; sourceTree = "<group>"; };
 		D08E7F93B8B6F57FE6CCE411B0A6E37A /* Pods-RefreshKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RefreshKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D0C274576DFEFF03231BC9116C3B21B9 /* Pods-RefreshKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		D1EAACD839C2369EBD398C0135BC9A19 /* BerryPlant.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BerryPlant.modulemap; sourceTree = "<group>"; };
@@ -229,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				60BDA8738BEA9D0D0450A04EE472064D /* arrow@2x.png */,
-				4029CD69E1D35C31E2B2339C1704B4C8 /* camera_prop@2x.png */,
+				4029CD69E1D35C31E2B2339C1704B4C8 /* animate@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -372,6 +374,7 @@
 			children = (
 				9F5D5B937190E14FE5EA5FC5EF90D145 /* RefreshDefaultFooter.swift */,
 				712F1C13E5CA367601CECF2A127A59D1 /* RefreshFooterControl.swift */,
+				C30A03B0218BEA63009CD93E /* RefreshFastFooter.swift */,
 			);
 			name = Footer;
 			path = RefreshKit/Classes/Footer;
@@ -615,7 +618,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EACA44753C4818798480FC6D98D760D /* arrow@2x.png in Resources */,
-				A7392FD92A7430F78B5FA2A234610C83 /* camera_prop@2x.png in Resources */,
+				A7392FD92A7430F78B5FA2A234610C83 /* animate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +648,7 @@
 				2DEA14A781B72FD97168EC6B44C98A6B /* KVOBlock.swift in Sources */,
 				179EF1F1F1C97C6EA39A24D91B9B7F53 /* Refreshable.swift in Sources */,
 				44B0DBD44E99B00070A575A9BB58633F /* RefreshControl.swift in Sources */,
+				C30A03B2218BEA9E009CD93E /* RefreshFastFooter.swift in Sources */,
 				B7C3E9FBC34CAB70BF732CF4863DF6BE /* RefreshDefaultFooter.swift in Sources */,
 				CBCC738B1BA81451126647B38E9A005B /* RefreshDefaultHeader.swift in Sources */,
 				DD938D39BFC3A555CC42C9F719CA0ADC /* RefreshEventControl.swift in Sources */,

@@ -14,11 +14,6 @@ public enum DraggingEvent {
     case pulling(percent: Float)
     case complete
 }
-public enum DraggingType {
-    case none
-    case header
-    case footer
-}
 extension DraggingEvent: Equatable {
     public static func == (lhs: DraggingEvent, rhs: DraggingEvent) -> Bool {
         switch (lhs, rhs) {
@@ -39,11 +34,14 @@ extension DraggingEvent: Equatable {
 public typealias RefreshingBlock = () -> ()
 public class RefreshEventControl: RefreshControl {
     
+    ///拖动状态
     public var event: DraggingEvent = .none
+    ///UIScrollView初始Offset.y
     var basicOffsetY: CGFloat = 0
+    ///刷新回调
     var refreshingBlock: RefreshingBlock
+    ///是否正在刷新
     var isRefreshing: Bool = false
-    var draggingType: DraggingType = .none
     
     public init(with refreshingBlock: @escaping RefreshingBlock) {
         self.refreshingBlock = refreshingBlock
@@ -52,52 +50,58 @@ public class RefreshEventControl: RefreshControl {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    ///初始化UIScrollView最开始的位置
     private func initializeBasicOffsetYIfNeed(_ point: CGPoint, _ scrollView: UIScrollView) {
         if self.basicOffsetY == 0 && !scrollView.isDragging {
             self.basicOffsetY = point.y
         }
     }
+    ///处理正在拖动
     public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
-        
+        if point.y == self.basicOffsetY {
+            //回到初始位置
+            self.scrollViewDidRestorePosotion()
+        }
     }
+    ///恢复到初始位置
+    public func scrollViewDidRestorePosotion() {
+        self.isResponse = false
+    }
+    ///开始刷新
+    
     public func startRefresh() {
         self.isRefreshing = true
         self.parent.isScrollEnabled = false
     }
+    ///停止刷新
     public func stopRefresh() {
         self.isRefreshing = false
         self.parent.isScrollEnabled = true
     }
+    ///正在刷新
     public func refreshing() {
         self.refreshingBlock()
     }
+    ///刷新完成
     public func refreshCompleted() {
         
     }
+    ///状态发生改变
     public func eventChanged(_ newEvent: DraggingEvent) {
         
     }
-    internal func updateEvent(_ newEvent: DraggingEvent) {
+    ///更新状态
+    final internal func updateEvent(_ newEvent: DraggingEvent) {
         guard self.event != newEvent else { return }
+        self.isResponse = newEvent != .none
         self.event = newEvent
-        print("更新: \(self.event)")
+        print("更新: \(self.event) -- \(self.isResponse)")
         self.eventChanged(newEvent)
     }
-    internal override func dragging(_ point: CGPoint) {
+    ///正在拖动
+     final internal override func dragging(_ point: CGPoint) {
         let scrollView = self.parent
         self.initializeBasicOffsetYIfNeed(point, scrollView)
-        if point.y < self.basicOffsetY {
-            if self.draggingType == .none {
-                self.draggingType = .header
-            }
-        } else if point.y > self.basicOffsetY {
-            if self.draggingType == .none {
-                self.draggingType = .footer
-            }
-        } else {
-            self.draggingType = .none
-        }
         self.handleDragging(point, scrollView)
     }
 

@@ -9,18 +9,12 @@ import UIKit
 
 public class RefreshHeaderControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
-    #error("上下拉有问题")
-    override var draggingType: DraggingType {
-        willSet {
-            self.isHidden =  newValue == .footer
-        }
-    }
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
     }
     override public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         super.handleDragging(point, scrollView)
-        guard self.draggingType == .header else { return }
+        guard let footer = scrollView.refresh.footer, footer.isResponse == false else { return }
         if scrollView.isDragging {
             let h = self.frame.size.height
             let offsetY = point.y - self.basicOffsetY

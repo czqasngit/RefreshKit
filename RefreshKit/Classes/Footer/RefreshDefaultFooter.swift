@@ -96,7 +96,7 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         self.activity.isHidden = true
         self.imageArrow.isHidden = false
         let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
-        self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/camera_prop.png")
+        self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/animate.png")
     }
     public override func startRefresh() {
         super.startRefresh()

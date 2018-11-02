@@ -15,6 +15,19 @@ extension Date {
         return  "最后更新: \(formatter.string(from: Date()))"
     }
 }
+extension DraggingEvent {
+    var headerText: String {
+        switch self {
+        case .complete:
+            return "松开立即刷新"
+        case .pulling(_),
+             .perpare:
+            return "下拉即可刷新"
+        default:
+            return ""
+        }
+    }
+}
 public class RefreshDefaultHeader: RefreshHeaderControl {
     
     let labelTime = UILabel()
@@ -83,9 +96,10 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
     
     override public func eventChanged(_ newEvent: DraggingEvent) {
         super.eventChanged(newEvent)
+        
         switch newEvent {
         case .complete:
-            self.labtlStatus.text = "松开立即刷新"
+            self.labtlStatus.text = newEvent.headerText
             if canRotateicon() {
                 UIView.animate(withDuration: 0.15) {
                     self.icon.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi)
@@ -94,12 +108,12 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
             self.activity.isHidden = true
             self.icon.isHidden = false
         case .perpare:
-            self.labtlStatus.text = "下拉即可刷新"
+            self.labtlStatus.text = newEvent.headerText
             self.icon.transform = CGAffineTransform.init(rotationAngle: 0)
             self.activity.isHidden = true
             self.icon.isHidden = false
         case .pulling(_):
-            self.labtlStatus.text = "下拉即可刷新"
+            self.labtlStatus.text = newEvent.headerText
             if canRotateicon() {
                 UIView.animate(withDuration: 0.15) {
                     self.icon.transform = CGAffineTransform.init(rotationAngle: 0)

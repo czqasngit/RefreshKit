@@ -11,11 +11,7 @@ public class RefreshFooterControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
     var hasMore: Bool = true
     var contentInset: UIEdgeInsets!
-    override var draggingType: DraggingType {
-        willSet {
-            self.isHidden =  newValue == .header
-        }
-    }
+   
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
         self.isHidden = true
@@ -28,8 +24,8 @@ public class RefreshFooterControl: RefreshEventControl {
     }
     override public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         super.handleDragging(point, scrollView)
-        guard self.draggingType == .footer else { return }
         guard self.hasMore else { return }
+        guard let header = scrollView.refresh.header, header.isResponse == false else { return }
         if scrollView.isDragging {
             let h = self.frame.size.height
             let offsetY = point.y - self.basicOffsetY
@@ -63,6 +59,7 @@ public class RefreshFooterControl: RefreshEventControl {
             }
         }
     }
+
     override public func eventChanged(_ newEvent: DraggingEvent) {
         switch newEvent {
         case .complete:
@@ -75,7 +72,7 @@ public class RefreshFooterControl: RefreshEventControl {
             break
         }
     }
-    override func contentSizeChanged(_ contentSize: CGSize) {
+    override func contentSizeUpdated(_ contentSize: CGSize) {
         if let const = (self.parent.constraints.filter { $0.firstAttribute == .top && $0.secondAttribute == .top && $0.constant >= 0 }.first) {
             const.constant = contentSize.height
         }

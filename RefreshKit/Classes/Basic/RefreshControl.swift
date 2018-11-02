@@ -9,6 +9,9 @@ import Foundation
 
 
 public class RefreshControl: UIView {
+    
+    ///防止内容不多时,上拉下拉同时触发
+    var isResponse = false 
     deinit {
         print("RefreshControl deinit")
     }
@@ -21,17 +24,18 @@ public class RefreshControl: UIView {
                 self.dragging(point)
             } else if keyPath == "contentSize" {
                 guard let size = value as? CGSize else { return }
-                self.contentSizeChanged(size)
+                self.contentSizeUpdated(size)
             }
         }
     }
+
     internal var parent: UIScrollView {
         guard let scrollView = self.superview as? UIScrollView else {
             fatalError("Superview is not UIScrollView")
         }
         return scrollView
     }
-    internal func contentSizeChanged(_ contentSize: CGSize) {
+    internal func contentSizeUpdated(_ contentSize: CGSize) {
         
     }
     internal func dragging(_ point: CGPoint) {
