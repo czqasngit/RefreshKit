@@ -100,7 +100,7 @@ public class RefreshEventControl: RefreshControl {
         guard self.event != newEvent else { return }
         self.isResponse = newEvent != .none
         self.event = newEvent
-        print("更新: \(self.event) -- \(self.isResponse)")
+//        print("更新: \(self.event) -- \(self.isResponse)")
         self.eventChanged(newEvent)
     }
     ///正在拖动
