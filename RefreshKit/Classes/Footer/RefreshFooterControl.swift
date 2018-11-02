@@ -39,6 +39,7 @@ public class RefreshFooterControl: RefreshEventControl {
     override public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         super.handleDragging(point, scrollView)
         guard self.hasMore else { return }
+        guard scrollView.contentSize.height >= 1 else { return }
         if let header = scrollView.refresh.header, header.isResponse == true { return }
         if scrollView.isDragging {
             let h = self.frame.size.height
@@ -57,9 +58,11 @@ public class RefreshFooterControl: RefreshEventControl {
         } else {
             switch self.event {
             case .complete:
-                self.startRefresh()
-                self.refreshing()
-                self.updateEvent(.none)
+                if !self.isRefreshing {
+                    self.updateEvent(.none)
+                    self.startRefresh()
+                    self.refreshing()
+                }
             case .perpare:
                 if self.parent.contentSize.height + self.frame.size.height < self.parent.frame.size.height {
                     self.isHidden = true

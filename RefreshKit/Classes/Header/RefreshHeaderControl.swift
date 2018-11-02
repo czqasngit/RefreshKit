@@ -30,9 +30,11 @@ public class RefreshHeaderControl: RefreshEventControl {
         } else {
             switch self.event {
             case .complete:
-                self.startRefresh()
-                self.refreshing()
-                self.updateEvent(.none)
+                if !self.isRefreshing {
+                    self.updateEvent(.none)
+                    self.startRefresh()
+                    self.refreshing()
+                }
             default:
                 break
             }

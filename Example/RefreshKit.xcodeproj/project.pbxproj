@@ -20,6 +20,7 @@
 		C30A03AD218ACA4D009CD93E /* APNGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03AC218ACA4D009CD93E /* APNGViewController.swift */; };
 		C30A03AF218ACCC7009CD93E /* loading.apng in Resources */ = {isa = PBXBuildFile; fileRef = C30A03AE218ACCC7009CD93E /* loading.apng */; };
 		C30A03B4218BED3A009CD93E /* AutoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03B3218BED39009CD93E /* AutoFooter.swift */; };
+		C38A3FC8218C1A960081537B /* SwiftRefreshKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C38A3FC7218C1A960081537B /* SwiftRefreshKit.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17D3D2790583686585916D62 /* RefreshKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RefreshKit.podspec; path = ../RefreshKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		43EB0D3B48D687AC783305CB /* Pods_RefreshKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefreshKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FE09EC4CA7C509BA3C938B /* Pods-RefreshKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Tests/Pods-RefreshKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F11A2E7DFF949D561241BE4 /* Pods_RefreshKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefreshKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +54,7 @@
 		C30A03AC218ACA4D009CD93E /* APNGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APNGViewController.swift; sourceTree = "<group>"; };
 		C30A03AE218ACCC7009CD93E /* loading.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.apng; sourceTree = "<group>"; };
 		C30A03B3218BED39009CD93E /* AutoFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoFooter.swift; sourceTree = "<group>"; };
+		C38A3FC7218C1A960081537B /* SwiftRefreshKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SwiftRefreshKit.podspec; path = ../SwiftRefreshKit.podspec; sourceTree = "<group>"; };
 		D16F65AA318A38DDEA9883CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F751CD0A0F33050F939E07AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FB29F418D86A3486D008CAD7 /* Pods-RefreshKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RefreshKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RefreshKit_Example/Pods-RefreshKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,7 +159,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				17D3D2790583686585916D62 /* RefreshKit.podspec */,
+				C38A3FC7218C1A960081537B /* SwiftRefreshKit.podspec */,
 				D16F65AA318A38DDEA9883CB /* README.md */,
 				F751CD0A0F33050F939E07AF /* LICENSE */,
 			);
@@ -265,6 +266,7 @@
 				C30A03A9218AA9B2009CD93E /* timg.gif in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				C38A3FC8218C1A960081537B /* SwiftRefreshKit.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
