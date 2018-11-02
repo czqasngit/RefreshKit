@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'RefreshKit'
+  s.name             = 'SwiftRefreshKit'
   s.version          = '1.0.0'
   s.summary          = 'A refresh kit for UIScrollView written by Swift.'
 
