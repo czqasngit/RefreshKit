@@ -13,7 +13,9 @@ Pull-up pull-down kit
 Simple to use and extend
 ## Feature
 1.Default Header and Footer.
+
 2.Animate Header(Gif, APNG).
+
 3.Fast loading Footer refresh.
 ## Extension
 1.Lottie
