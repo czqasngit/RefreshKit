@@ -97,6 +97,7 @@ public class RefreshFooterControl: RefreshEventControl {
     var reqiureFixOffsetOnLoading: Bool {
         return true
     }
+  
     public override func startRefresh() {
         super.startRefresh()
         if reqiureFixOffsetOnLoading {
@@ -110,6 +111,7 @@ public class RefreshFooterControl: RefreshEventControl {
         super.refreshing()
     }
     public override func stopRefresh() {
+        guard self.isRefreshing else { return }
         super.stopRefresh()
         self.refreshCompleted()
     }

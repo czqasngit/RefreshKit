@@ -65,14 +65,16 @@ public class RefreshEventControl: RefreshControl {
     public func scrollViewDidRestorePosotion() {
         self.isResponse = false
     }
-    ///开始刷新
+   
     
+     ///开始刷新
     public func startRefresh() {
         self.isRefreshing = true
         self.parent.isScrollEnabled = false
     }
     ///停止刷新
     public func stopRefresh() {
+        guard self.isRefreshing else { return }
         self.isRefreshing = false
         self.parent.isScrollEnabled = true
     }

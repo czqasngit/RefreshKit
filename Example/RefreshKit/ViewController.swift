@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.edgesForExtendedLayout = .init(rawValue: 0)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.refresh.header = RefreshDefaultHeader.make {
+            print("执行刷新")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.count = 10
                 self.tableView.reloadData()
@@ -59,6 +60,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidAppear(true)
 //        self.tableView.refresh.header?.toggle()
         tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        self.tableView.refresh.header?.toggle()
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return count
