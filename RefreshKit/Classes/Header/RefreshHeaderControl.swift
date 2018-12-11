@@ -46,7 +46,9 @@ public class RefreshHeaderControl: RefreshEventControl {
     public func toggle() {
         guard !self.isRefreshing else { return }
         self.startRefresh()
-        self.refreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.refreshing()
+        }
     }
     public override func startRefresh() {
         super.startRefresh()
@@ -57,6 +59,7 @@ public class RefreshHeaderControl: RefreshEventControl {
         super.refreshing()
     }
     public override func stopRefresh() {
+        guard self.isRefreshing else { return }
         super.stopRefresh()
         self.stopRefresh(true)
     }

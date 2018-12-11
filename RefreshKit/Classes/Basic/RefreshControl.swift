@@ -11,7 +11,10 @@ import Foundation
 public class RefreshControl: UIView {
     
     ///防止内容不多时,上拉下拉同时触发
-    var isResponse = false 
+    var isResponse = false
+    ///UIScrollView初始Offset.y
+    var basicOffsetY: CGFloat = 0
+    var isDragged = false
     deinit {
         print("RefreshControl deinit")
     }
@@ -21,6 +24,13 @@ public class RefreshControl: UIView {
                   let value = change?[NSKeyValueChangeKey.newKey] else { return }
             if keyPath == "contentOffset" {
                 guard let point = value as? CGPoint else { return }
+                if !self.parent.isDragging && self.basicOffsetY == 0 && !self.isDragged {
+                    self.basicOffsetY = point.y
+                    print("初始Offset: \(self.basicOffsetY)")
+                }
+                if self.parent.isDragging {
+                    self.isDragged = true
+                }
                 self.dragging(point)
             } else if keyPath == "contentSize" {
                 guard let size = value as? CGSize else { return }

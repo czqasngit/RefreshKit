@@ -110,6 +110,7 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         print("正在刷新...")
     }
     public override func stopRefresh() {
+        guard self.isRefreshing else { return }
         super.stopRefresh()
         self.labtlStatus.text = DraggingEvent.refreshCompleted
         self.activity.isHidden = true

@@ -41,8 +41,7 @@ public class RefreshEventControl: RefreshControl {
     
     ///拖动状态
     public var event: DraggingEvent = .none
-    ///UIScrollView初始Offset.y
-    var basicOffsetY: CGFloat = 0
+    
     ///刷新回调
     var refreshingBlock: RefreshingBlock
     ///是否正在刷新
@@ -55,12 +54,6 @@ public class RefreshEventControl: RefreshControl {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    ///初始化UIScrollView最开始的位置
-    private func initializeBasicOffsetYIfNeed(_ point: CGPoint, _ scrollView: UIScrollView) {
-        if self.basicOffsetY == 0 && !scrollView.isDragging {
-            self.basicOffsetY = point.y
-        }
-    }
     ///处理正在拖动
     public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         if point.y == self.basicOffsetY {
@@ -72,14 +65,16 @@ public class RefreshEventControl: RefreshControl {
     public func scrollViewDidRestorePosotion() {
         self.isResponse = false
     }
-    ///开始刷新
+   
     
+     ///开始刷新
     public func startRefresh() {
         self.isRefreshing = true
         self.parent.isScrollEnabled = false
     }
     ///停止刷新
     public func stopRefresh() {
+        guard self.isRefreshing else { return }
         self.isRefreshing = false
         self.parent.isScrollEnabled = true
     }
@@ -106,7 +101,6 @@ public class RefreshEventControl: RefreshControl {
     ///正在拖动
      final internal override func dragging(_ point: CGPoint) {
         let scrollView = self.parent
-        self.initializeBasicOffsetYIfNeed(point, scrollView)
         self.handleDragging(point, scrollView)
     }
 
