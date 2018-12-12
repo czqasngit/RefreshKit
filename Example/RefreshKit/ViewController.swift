@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.automaticallyAdjustsScrollViewInsets = true
         self.navigationController?.navigationBar.isTranslucent = false
         self.edgesForExtendedLayout = .init(rawValue: 0)
+        tableView.contentInset = .init(top: 150, left: 0, bottom: 0, right: 0)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.refresh.header = RefreshDefaultHeader.make {
             print("执行刷新")

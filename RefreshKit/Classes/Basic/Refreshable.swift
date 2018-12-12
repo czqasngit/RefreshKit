@@ -55,7 +55,7 @@ extension UIScrollView: Refreshable {
         header.addConstraint(.init(item: header, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: header.refreshHeight))
         self.addConstraint(.init(item: header, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0))
         self.addConstraint(.init(item: header, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1.0, constant: 0))
-        self.addConstraint(.init(item: header, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: -header.refreshHeight))
+        self.addConstraint(.init(item: header, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: -header.refreshHeight - self.contentInset.top))
         self.clipsToBounds = true
         header.addObserve()
     }
