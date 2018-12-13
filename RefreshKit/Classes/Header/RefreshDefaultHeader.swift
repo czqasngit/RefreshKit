@@ -32,13 +32,16 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
     
     let labelTime = UILabel()
     let labtlStatus = UILabel()
-    var icon: BerryAnimateImageView
+    var icon: UIImageView
     let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-    let imageProvider: BerryImageProvider
+    var imageProvider: BerryImageProvider? = nil
     public init(with path: String, refreshingBlock: @escaping RefreshingBlock) {
-        let data = try! Data.init(contentsOf: URL(fileURLWithPath: path))
-        self.imageProvider = FindImageDecoder(with: data)
-        self.icon = BerryAnimateImageView(with: imageProvider, frame: .zero)
+        if let data = try? Data.init(contentsOf: URL(fileURLWithPath: path)) {
+            self.imageProvider = FindImageDecoder(with: data)
+            self.icon = BerryAnimateImageView(with: imageProvider!, frame: .zero)
+        } else {
+            self.icon = UIImageView(frame: .zero)
+        }
         super.init(with: refreshingBlock)
         self.setup()
     }

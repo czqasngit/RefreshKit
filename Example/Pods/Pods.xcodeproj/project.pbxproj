@@ -38,6 +38,7 @@
 		B14371AAE78DA02612A5DBFE65865DDE /* BerryPlant-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D5CC3A83DD899E6B32ABDC4C500CCC05 /* BerryPlant-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA980B43101C54CBFF6395FB8C7B9EEA /* BerryTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA991BF77B346D496A2D0061D7C920 /* BerryTransaction.swift */; };
 		C15688968AE55DC492EA15CE7F772AF5 /* BerryImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1E874BEB589668D8B7CA52957F8373 /* BerryImageFormat.swift */; };
+		C316635221C20A7200FCC952 /* RefreshFramesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316635021C209D900FCC952 /* RefreshFramesHeader.swift */; };
 		CBD2C5AE426BF8C9B37EA6E8E7B1898B /* BerryPlant-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B14EE6FEB57332E71577AE839CA462 /* BerryPlant-dummy.m */; };
 		CCFD85024A1DA679AC5441CA194C4026 /* Pods-RefreshKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A20A5B157657EA2309EEE902C2CBCA8E /* Pods-RefreshKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6A97F3FA928BDED6B385186983CD6E0 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1282F9042B62D90C85A56E69D11B82 /* Data+Extensions.swift */; };
@@ -118,33 +119,34 @@
 		75C52D629C57C04E44111CE648ABAB34 /* BerryAPNGDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryAPNGDecoder.swift; path = BerryPlant/Classes/ImageDecode/Decoder/APNG/BerryAPNGDecoder.swift; sourceTree = "<group>"; };
 		8A1F22D585A6152105B060238C36A94B /* Pods-RefreshKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RefreshKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB0A276531411023D28FEE650B35AE7 /* ResourceBundle-RefreshKit-RefreshKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-RefreshKit-RefreshKit-Info.plist"; sourceTree = "<group>"; };
-		8F90F16BACCCFF27DBD7CA2D855FD76F /* BerryPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BerryPlant.framework; path = BerryPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F90F16BACCCFF27DBD7CA2D855FD76F /* BerryPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BerryPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9231B4A055256E47404A365488B9C848 /* BerryProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryProxy.swift; path = BerryPlant/Classes/ImageDecode/Unilitys/BerryProxy.swift; sourceTree = "<group>"; };
 		927BBD6EAFD6E66E2237D6467B40E6F1 /* Pods-RefreshKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RefreshKit_Tests.modulemap"; sourceTree = "<group>"; };
 		99DB116BA1518D08C2581B34F39AC00F /* RefreshKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RefreshKit-Info.plist"; sourceTree = "<group>"; };
 		9B1CD60E672CBB04C3C48C4ED2EE9B72 /* arrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow@2x.png"; path = "RefreshKit/Assets/arrow@2x.png"; sourceTree = "<group>"; };
 		A20A5B157657EA2309EEE902C2CBCA8E /* Pods-RefreshKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RefreshKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		A848577E5E13203F464C2EEE632D8F75 /* Pods-RefreshKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RefreshKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		ACFBCA2DF359ED27090A71FF9E669AA5 /* RefreshKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = RefreshKit.bundle; path = "RefreshKit-RefreshKit.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACFBCA2DF359ED27090A71FF9E669AA5 /* RefreshKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RefreshKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAF9922B9FBE9D0EF42FE85C44EC09B /* BerryAPNGStructure.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryAPNGStructure.swift; path = BerryPlant/Classes/ImageDecode/Decoder/APNG/BerryAPNGStructure.swift; sourceTree = "<group>"; };
 		AE739020D7C66DD2EDF49C562193698B /* Refreshable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		AF6FCFE665D05755F4F30944F3828D1A /* Pods-RefreshKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RefreshKit_Example-dummy.m"; sourceTree = "<group>"; };
-		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B3E4772DA095DB4CC833D407AA55786C /* RefreshKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RefreshKit.xcconfig; sourceTree = "<group>"; };
 		B681D1014702A8C91097D5B19A4635A5 /* Pods-RefreshKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Example-Info.plist"; sourceTree = "<group>"; };
 		B80A15B77F3ECF0BF2195E736F2083ED /* Pods-RefreshKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RefreshKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		B93F9300F5F7488CA56EF2EA4E54E293 /* RefreshDefaultHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RefreshDefaultHeader.swift; sourceTree = "<group>"; };
 		BA7942FE8CB94A4F707BFB56A86BFC90 /* BerryAnimateImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryAnimateImageView.swift; path = BerryPlant/Classes/ImageDecode/UI/BerryAnimateImageView.swift; sourceTree = "<group>"; };
 		BABF9DE66A96280AC287BDBD32160611 /* KVOBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KVOBlock.swift; sourceTree = "<group>"; };
-		C0188DA127BE8902612644EEB25C0E0D /* RefreshKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RefreshKit.framework; path = RefreshKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0188DA127BE8902612644EEB25C0E0D /* RefreshKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RefreshKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C316635021C209D900FCC952 /* RefreshFramesHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshFramesHeader.swift; sourceTree = "<group>"; };
 		C5D3D893A0988EF06F226B9A90BA7396 /* RefreshControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
-		CA7141E8DFA7E34FF9D0BE9EA6D96F80 /* RefreshKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = RefreshKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CA7141E8DFA7E34FF9D0BE9EA6D96F80 /* RefreshKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RefreshKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D08E7F93B8B6F57FE6CCE411B0A6E37A /* Pods-RefreshKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RefreshKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D0C274576DFEFF03231BC9116C3B21B9 /* Pods-RefreshKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		D1EAACD839C2369EBD398C0135BC9A19 /* BerryPlant.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BerryPlant.modulemap; sourceTree = "<group>"; };
 		D5CC3A83DD899E6B32ABDC4C500CCC05 /* BerryPlant-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BerryPlant-umbrella.h"; sourceTree = "<group>"; };
 		DA821CA347EE423D151CEE10635F8750 /* Pods-RefreshKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		DD154160491BE7B1FA4A32E33197F3B1 /* Pods_RefreshKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RefreshKit_Example.framework; path = "Pods-RefreshKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD154160491BE7B1FA4A32E33197F3B1 /* Pods_RefreshKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefreshKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFBFB0287E49BE7D0396CE63998E20DE /* Berry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Berry.swift; path = BerryPlant/Classes/Berry.swift; sourceTree = "<group>"; };
 		E1E08C12D351C5C836F7566C9567A1B0 /* Integer+Exensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Integer+Exensions.swift"; path = "BerryPlant/Classes/ImageDecode/Extensions/Integer+Exensions.swift"; sourceTree = "<group>"; };
 		E3602E1456BAA78A4A762345C59EC040 /* RefreshDefaultFooter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RefreshDefaultFooter.swift; sourceTree = "<group>"; };
@@ -152,11 +154,11 @@
 		E6B807B48272BEDC786819989C391B94 /* Pods-RefreshKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RefreshKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E8142B5340527B009C500E0F33C085D1 /* BerryPlant-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BerryPlant-Info.plist"; sourceTree = "<group>"; };
 		EC9A2BF1FC29F9546F320CAAEA97AE59 /* RefreshHeaderControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RefreshHeaderControl.swift; sourceTree = "<group>"; };
-		F0126D80973DABBE406ED403C79D2D67 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		F3ECDA8FF6455DAD066C062BEA427D2F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		F0126D80973DABBE406ED403C79D2D67 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F3ECDA8FF6455DAD066C062BEA427D2F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F863CD91F381FCC52DC7C4C0FFA3D0DA /* RefreshKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RefreshKit-umbrella.h"; sourceTree = "<group>"; };
 		FC1E874BEB589668D8B7CA52957F8373 /* BerryImageFormat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryImageFormat.swift; path = BerryPlant/Classes/ImageDecode/Unilitys/BerryImageFormat.swift; sourceTree = "<group>"; };
-		FFAB4D79A077044302857A69657B6ADB /* Pods_RefreshKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RefreshKit_Tests.framework; path = "Pods-RefreshKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFAB4D79A077044302857A69657B6ADB /* Pods_RefreshKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RefreshKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				69AE0D9F9430C64370069705130750F2 /* RefreshAnimateHeader.swift */,
+				C316635021C209D900FCC952 /* RefreshFramesHeader.swift */,
 				B93F9300F5F7488CA56EF2EA4E54E293 /* RefreshDefaultHeader.swift */,
 				EC9A2BF1FC29F9546F320CAAEA97AE59 /* RefreshHeaderControl.swift */,
 			);
@@ -418,7 +421,6 @@
 				0147D90378917CDC4EAC1A5A4D5980DA /* String+Extensions.swift */,
 				5CD4F0AC0EC78C2E4B310A27F2BE5058 /* Support Files */,
 			);
-			name = BerryPlant;
 			path = BerryPlant;
 			sourceTree = "<group>";
 		};
@@ -678,6 +680,7 @@
 			files = (
 				70D6D29D5DCFAEEB13D3E3767E7B7E40 /* KVOBlock.swift in Sources */,
 				E1A8B1460418B8548F8C1C5CB881B9A3 /* Refreshable.swift in Sources */,
+				C316635221C20A7200FCC952 /* RefreshFramesHeader.swift in Sources */,
 				64A47C73042EF1EF7F20F8A1E7C34651 /* RefreshAnimateHeader.swift in Sources */,
 				88773E0B9AB858DE1AB71A9B9B8D52B3 /* RefreshControl.swift in Sources */,
 				AAFE794828D5E0F4925D5115F3E2C3A2 /* RefreshDefaultFooter.swift in Sources */,
@@ -1104,8 +1107,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};

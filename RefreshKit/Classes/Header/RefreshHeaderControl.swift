@@ -24,6 +24,7 @@ public class RefreshHeaderControl: RefreshEventControl {
                 let percent = Float((abs(offsetY) - abs(h / 2)) / abs(h / 2))
                 self.updateEvent(.pulling(percent: percent))
                 self.pulling(percent: percent)
+                
             } else if -h >= offsetY {
                 self.updateEvent(.complete)
             }

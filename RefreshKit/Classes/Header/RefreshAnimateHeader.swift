@@ -19,13 +19,13 @@ public class RefreshAnimateHeader: RefreshDefaultHeader {
     }
     public override func eventChanged(_ newEvent: DraggingEvent) {
         super.eventChanged(newEvent)
-        if let image = self.imageProvider.readImage(at: self.imageProvider.numberOfFrames() -  1) {
+        if let imageProvider = self.imageProvider, let image = imageProvider.readImage(at: imageProvider.numberOfFrames() -  1) {
             self.icon.image = UIImage(cgImage: image.image)
         }
     }
     public override func pulling(percent: Float) {
         super.pulling(percent: percent)
-        if let image = self.imageProvider.readImage(at: Int(Float(self.imageProvider.numberOfFrames()) * percent)) {
+        if  let imageProvider = self.imageProvider, let image = imageProvider.readImage(at: Int(Float(imageProvider.numberOfFrames()) * percent)) {
             self.icon.image = UIImage(cgImage: image.image)
         }
         

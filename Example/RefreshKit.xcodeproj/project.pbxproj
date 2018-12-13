@@ -20,6 +20,7 @@
 		C30A03AD218ACA4D009CD93E /* APNGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03AC218ACA4D009CD93E /* APNGViewController.swift */; };
 		C30A03AF218ACCC7009CD93E /* loading.apng in Resources */ = {isa = PBXBuildFile; fileRef = C30A03AE218ACCC7009CD93E /* loading.apng */; };
 		C30A03B4218BED3A009CD93E /* AutoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03B3218BED39009CD93E /* AutoFooter.swift */; };
+		C316634F21C207C200FCC952 /* loading2.png in Resources */ = {isa = PBXBuildFile; fileRef = C316634E21C207C200FCC952 /* loading2.png */; };
 		C38A3FC8218C1A960081537B /* SwiftRefreshKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C38A3FC7218C1A960081537B /* SwiftRefreshKit.podspec */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		C30A03AC218ACA4D009CD93E /* APNGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APNGViewController.swift; sourceTree = "<group>"; };
 		C30A03AE218ACCC7009CD93E /* loading.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.apng; sourceTree = "<group>"; };
 		C30A03B3218BED39009CD93E /* AutoFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoFooter.swift; sourceTree = "<group>"; };
+		C316634E21C207C200FCC952 /* loading2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading2.png; sourceTree = "<group>"; };
 		C38A3FC7218C1A960081537B /* SwiftRefreshKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SwiftRefreshKit.podspec; path = ../SwiftRefreshKit.podspec; sourceTree = "<group>"; };
 		D16F65AA318A38DDEA9883CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F751CD0A0F33050F939E07AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		607FACD21AFB9204008FA782 /* Example for RefreshKit */ = {
 			isa = PBXGroup;
 			children = (
+				C316634E21C207C200FCC952 /* loading2.png */,
 				C30A03A8218AA9B2009CD93E /* timg.gif */,
 				C30A03AE218ACCC7009CD93E /* loading.apng */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -263,6 +266,7 @@
 			files = (
 				C30A03AF218ACCC7009CD93E /* loading.apng in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				C316634F21C207C200FCC952 /* loading2.png in Resources */,
 				C30A03A9218AA9B2009CD93E /* timg.gif in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
