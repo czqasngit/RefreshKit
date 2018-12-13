@@ -28,7 +28,7 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return String.init(format: "pull_loading_000%02d", $0)
         }
         
-        self.tableView.refresh.header = RefreshFramesHeader.make(frames, 10) {
+        self.tableView.refresh.header = RefreshFramesHeader.make(frames.map { UIImage(named: $0)! }, 10) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.count = 10
                 self.tableView.reloadData()

@@ -19,14 +19,10 @@ import BerryPlant
 
 
 public class RefreshFramesHeader: RefreshDefaultHeader {
-    var frames: [String]
     var images: [UIImage]
     var pullingMaxFrameCount: Int
-    init(with frames: [String], pullingMaxFrameCount: Int, refreshingBlock: @escaping RefreshingBlock) {
-        self.frames = frames
-        self.images = frames.map {
-            return UIImage(named: $0)!
-        }
+    init(with frames: [UIImage], pullingMaxFrameCount: Int, refreshingBlock: @escaping RefreshingBlock) {
+        self.images = frames
         self.pullingMaxFrameCount = pullingMaxFrameCount
         super.init(with: "", refreshingBlock: refreshingBlock)
     }
@@ -66,7 +62,7 @@ public class RefreshFramesHeader: RefreshDefaultHeader {
 }
 
 extension RefreshFramesHeader {
-    static public func make(_ frames: [String], _ pullingMaxFrameCount: Int, refreshingBlock: @escaping RefreshingBlock) -> RefreshFramesHeader {
+    static public func make(_ frames: [UIImage], _ pullingMaxFrameCount: Int, refreshingBlock: @escaping RefreshingBlock) -> RefreshFramesHeader {
         let header = RefreshFramesHeader.init(with: frames, pullingMaxFrameCount: pullingMaxFrameCount, refreshingBlock: refreshingBlock)
         return header
     }
