@@ -20,7 +20,7 @@ extension UIEdgeInsets {
 public class RefreshFooterControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
     var hasMore: Bool = true
-    var contentInset: UIEdgeInsets!
+    var contentInset: UIEdgeInsets = .zero
    
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
@@ -28,7 +28,7 @@ public class RefreshFooterControl: RefreshEventControl {
     }
     public override func layoutSubviews() {
         super.layoutSubviews()
-        if self.contentInset == nil {
+        if self.contentInset == .zero {
             self.parent.contentInset = self.parent.contentInset + self.contentInsetOffset()
             self.contentInset = self.parent.contentInset
         }
@@ -121,7 +121,7 @@ public class RefreshFooterControl: RefreshEventControl {
     public func noMoreData() {
         super.stopRefresh()
         self.hasMore = false
-        var inset = self.contentInset!
+        var inset = self.contentInset
         inset.bottom += self.frame.size.height
         self.parent.contentInset = inset
     }
