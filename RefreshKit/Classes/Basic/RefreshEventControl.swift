@@ -76,7 +76,7 @@ public class RefreshEventControl: RefreshControl {
     public func stopRefresh() {
         guard self.isRefreshing else { return }
         self.isRefreshing = false
-        self.parent.isScrollEnabled = true
+        
     }
     ///正在刷新
     public func refreshing() {
@@ -84,7 +84,7 @@ public class RefreshEventControl: RefreshControl {
     }
     ///刷新完成
     public func refreshCompleted() {
-        
+        self.parent.isScrollEnabled = true
     }
     ///状态发生改变
     public func eventChanged(_ newEvent: DraggingEvent) {
