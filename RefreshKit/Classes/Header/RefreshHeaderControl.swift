@@ -9,6 +9,8 @@ import UIKit
 
 public class RefreshHeaderControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
+    /// top inset fix value
+    var topInsetFix: CGFloat = 0
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
     }
@@ -82,9 +84,6 @@ public class RefreshHeaderControl: RefreshEventControl {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// top inset fix value
-    var topInsetFix: CGFloat {
-        return 0
-    }
+    
 
 }
