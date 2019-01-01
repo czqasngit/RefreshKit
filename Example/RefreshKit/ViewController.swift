@@ -26,11 +26,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = true
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        }
+        self.extendedLayoutIncludesOpaqueBars = false
         self.navigationController?.navigationBar.isTranslucent = false
         self.edgesForExtendedLayout = .init(rawValue: 0)
-        tableView.contentInset = .init(top: 150, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = .init(top: 250, left: 0, bottom: 0, right: 0)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.refresh.header = RefreshDefaultHeader.make {
+        self.tableView.backgroundColor = UIColor.clear
+        let header = RefreshDefaultHeader.make {
             print("执行刷新")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.count = 10
@@ -39,6 +44,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.tableView.refresh.footer?.resetNoMoreData()
             })
         }
+        header.topInsetFix = 250
+        self.tableView.refresh.header = header
         self.tableView.refresh.footer = RefreshDefaultFooter.make {
             if self.count >= 20 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {

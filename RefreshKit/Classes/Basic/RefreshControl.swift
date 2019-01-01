@@ -25,7 +25,7 @@ public class RefreshControl: UIView {
             if keyPath == "contentOffset" {
                 guard let point = value as? CGPoint else { return }
                 if !self.parent.isDragging && self.basicOffsetY == 0 && !self.isDragged {
-                    self.basicOffsetY = point.y + 0.01
+                    self.basicOffsetY = point.y + 0.01 - self.parent.contentInset.top
                     print("初始Offset: \(self.basicOffsetY)")
                 }
                 if self.parent.isDragging {
