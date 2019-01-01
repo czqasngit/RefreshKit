@@ -10,7 +10,7 @@ import UIKit
 public class RefreshHeaderControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
     /// top inset fix value
-    var topInsetFix: CGFloat = 0
+    public var topInsetFix: CGFloat = 0
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
     }
