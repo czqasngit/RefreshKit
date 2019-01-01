@@ -81,5 +81,10 @@ public class RefreshHeaderControl: RefreshEventControl {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    /// top inset fix value
+    var topInsetFix: CGFloat {
+        return 0
+    }
 
 }
