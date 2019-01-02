@@ -21,6 +21,17 @@ extension Refreshable {
 }
 let kHeader = UnsafeMutablePointer<UInt8>.allocate(capacity: 0)
 let kFooter = UnsafeMutablePointer<UInt8>.allocate(capacity: 1)
+let kTopConstraint = UnsafeMutablePointer<UInt8>.allocate(capacity: 2)
+extension UIScrollView {
+    public var topConstraint: NSLayoutConstraint? {
+        set {
+            objc_setAssociatedObject(self, kTopConstraint, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(self, kTopConstraint) as? NSLayoutConstraint
+        }
+    }
+}
 extension Refresh where Base: UIScrollView {
     public var header: RefreshHeaderControl? {
         set {
@@ -44,8 +55,15 @@ extension Refresh where Base: UIScrollView {
             return objc_getAssociatedObject(self.base, kFooter) as? RefreshFooterControl
         }
     }
+ 
     public func stopRefresh() {
         self.header?.stopRefresh()
+    }
+    public func configure(contentInset: UIEdgeInsets, topInsetFix: CGFloat) {
+        self.base.contentInset = contentInset
+        if let header = self.header, let constraint = self.base.topConstraint {
+            constraint.constant = -header.refreshHeight - contentInset.top + topInsetFix
+        }
     }
 }
 extension UIScrollView: Refreshable {
@@ -55,7 +73,10 @@ extension UIScrollView: Refreshable {
         header.addConstraint(.init(item: header, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: header.refreshHeight))
         self.addConstraint(.init(item: header, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0))
         self.addConstraint(.init(item: header, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1.0, constant: 0))
-        self.addConstraint(.init(item: header, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: -header.refreshHeight - self.contentInset.top + header.topInsetFix))
+        let top = NSLayoutConstraint.init(item: header, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0,
+                        constant: -header.refreshHeight)
+        self.addConstraint(top)
+        self.topConstraint = top
         self.clipsToBounds = true
         header.addObserve()
     }
@@ -70,5 +91,7 @@ extension UIScrollView: Refreshable {
         self.clipsToBounds = true
         footer.addObserve()
     }
+    
+  
     
 }

@@ -10,7 +10,6 @@ import UIKit
 public class RefreshHeaderControl: RefreshEventControl {
     var refreshHeight: CGFloat = 60
     /// top inset fix value
-    public var topInsetFix: CGFloat = 0
     public override init(with refreshingBlock: @escaping RefreshingBlock) {
         super.init(with: refreshingBlock)
     }
@@ -19,7 +18,7 @@ public class RefreshHeaderControl: RefreshEventControl {
         if let footer = scrollView.refresh.footer, footer.isResponse == true  { return }
         if scrollView.isDragging {
             let h = self.frame.size.height
-            let offsetY = point.y - self.basicOffsetY
+            let offsetY = point.y - self.basicOffsetY //- self.topInsetFix
             if (-h / 2)..<0 ~= offsetY {
                 self.updateEvent(.perpare)
             } else if (-h)..<(-h / 2) ~= offsetY {

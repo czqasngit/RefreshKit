@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.extendedLayoutIncludesOpaqueBars = false
         self.navigationController?.navigationBar.isTranslucent = false
         self.edgesForExtendedLayout = .init(rawValue: 0)
-        tableView.contentInset = .init(top: 250, left: 0, bottom: 0, right: 0)
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.backgroundColor = UIColor.clear
         let header = RefreshDefaultHeader.make {
@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.tableView.refresh.footer?.resetNoMoreData()
             })
         }
-        header.topInsetFix = 250
+        
         self.tableView.refresh.header = header
         self.tableView.refresh.footer = RefreshDefaultFooter.make {
             if self.count >= 20 {
@@ -63,6 +63,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 })
             }
         }
+        self.tableView.refresh.configure(contentInset: UIEdgeInsets.init(top: 250, left: 0, bottom: 0, right: 0), topInsetFix: 250)
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

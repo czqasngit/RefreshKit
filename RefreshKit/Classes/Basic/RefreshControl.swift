@@ -14,23 +14,18 @@ public class RefreshControl: UIView {
     var isResponse = false
     ///UIScrollView初始Offset.y
     var basicOffsetY: CGFloat = 0
-    var isDragged = false
+//    var isDragged = false
+    var _contentInset = UIEdgeInsets.zero
     deinit {
         print("RefreshControl deinit")
     }
     public func addObserve() {
+        print(self.parent.bounds)
         self.parent.observe(forKeyPath: ["contentOffset", "contentSize"]) {[weak self] (keyPath, object, change, context) in
-            guard let self = self,
-                  let value = change?[NSKeyValueChangeKey.newKey] else { return }
+            guard let self = self, let value = change?[NSKeyValueChangeKey.newKey] else { return }
             if keyPath == "contentOffset" {
                 guard let point = value as? CGPoint else { return }
-                if !self.parent.isDragging && self.basicOffsetY == 0 && !self.isDragged {
-                    self.basicOffsetY = point.y + 0.01 - self.parent.contentInset.top
-                    print("初始Offset: \(self.basicOffsetY)")
-                }
-                if self.parent.isDragging {
-                    self.isDragged = true
-                }
+                self.basicOffsetY = -self.parent.contentInset.top
                 self.dragging(point)
             } else if keyPath == "contentSize" {
                 guard let size = value as? CGSize else { return }
