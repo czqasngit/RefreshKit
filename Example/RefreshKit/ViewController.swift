@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.backgroundColor = UIColor.clear
         let header = RefreshDefaultHeader.make {
             print("执行刷新")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                 self.count = 10
                 self.tableView.reloadData()
                 self.tableView.refresh.header?.stopRefresh()
@@ -48,13 +48,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.refresh.header = header
         self.tableView.refresh.footer = RefreshDefaultFooter.make {
             if self.count >= 20 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
                     self.tableView.reloadData()
                     self.tableView.refresh.footer?.noMoreData()
                 })
             } else {
                 print("执行刷新...")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
                     self.count += 10
                     print("..............")
                     self.tableView.reloadData()

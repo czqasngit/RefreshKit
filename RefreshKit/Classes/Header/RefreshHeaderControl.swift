@@ -15,6 +15,7 @@ public class RefreshHeaderControl: RefreshEventControl {
     }
     override public func handleDragging(_ point: CGPoint, _ scrollView: UIScrollView) {
         super.handleDragging(point, scrollView)
+        guard self.isRefreshing == false else { return }
         if let footer = scrollView.refresh.footer, footer.isResponse == true  { return }
         if scrollView.isDragging {
             let h = self.frame.size.height

@@ -70,7 +70,7 @@ public class RefreshEventControl: RefreshControl {
      ///开始刷新
     public func startRefresh() {
         self.isRefreshing = true
-        self.parent.isScrollEnabled = false
+        self.parent.isUserInteractionEnabled = false
     }
     ///停止刷新
     public func stopRefresh() {
@@ -84,7 +84,7 @@ public class RefreshEventControl: RefreshControl {
     }
     ///刷新完成
     public func refreshCompleted() {
-        self.parent.isScrollEnabled = true
+        self.parent.isUserInteractionEnabled = true
     }
     ///状态发生改变
     public func eventChanged(_ newEvent: DraggingEvent) {
