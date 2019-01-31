@@ -1,23 +1,23 @@
 PODS:
-  - BerryPlant (1.0.0)
-  - RefreshKit (0.1.0):
+  - BerryPlant (1.0.1)
+  - SwiftRefreshKit (1.0.3):
     - BerryPlant
 
 DEPENDENCIES:
-  - RefreshKit (from `../`)
+  - SwiftRefreshKit (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BerryPlant
 
 EXTERNAL SOURCES:
-  RefreshKit:
+  SwiftRefreshKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BerryPlant: 560e7b108f47e3358a8c9301f01cbedfdfc58501
-  RefreshKit: 6d68cf0768cc297178ebcf7dde03be1396cb73fd
+  BerryPlant: b74a2f910b17b8ed24b2d113c56b8ffa468b3c56
+  SwiftRefreshKit: e91d7e00480d1bdf37b2516354fd062c3a467177
 
-PODFILE CHECKSUM: 1d16a0d6f56c0093c131a103a31a869a7874cc3b
+PODFILE CHECKSUM: f7c35533b94b111b56a4465d7b90a8c2ae969315
 
 COCOAPODS: 1.6.0.beta.2

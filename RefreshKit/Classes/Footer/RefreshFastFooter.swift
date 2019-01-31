@@ -33,7 +33,7 @@ public class RefreshFastFooter: RefreshDefaultFooter {
             let offsetHeightToLoading: CGFloat = 30
             if (maxOffsetHeight - offsetHeightToLoading)..<maxOffsetHeight ~= offsetY {
                 self.updateEvent(.perpare)
-                print("Fast footer  perpare")
+                _log("Fast footer  perpare")
             } else if maxOffsetHeight..<(maxOffsetHeight + 10) ~= offsetY {
                 self.updateEvent(.pulling(percent: Float((offsetY - h / 2) / (h / 2))))
             } else if offsetY >= maxOffsetHeight + 10 {

@@ -42,7 +42,7 @@ self.tableView.refresh.header = RefreshDefaultHeader.make {
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                     self.count += 10
-                    print("..............")
+                    _log("..............")
                     self.tableView.reloadData()
                     self.tableView.refresh.footer?.stopRefresh()
                 })

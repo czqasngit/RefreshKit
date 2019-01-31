@@ -1,0 +1,6 @@
+framework module SwiftRefreshKit {
+  umbrella header "SwiftRefreshKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RefreshKit
+import SwiftRefreshKit
 
 
 class AutoFooter: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -25,6 +25,8 @@ class AutoFooter: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         let path = Bundle.main.path(forResource: "loading", ofType: "apng")!
         self.tableView.refresh.header = RefreshAnimateHeader.make(path) {
+            [weak self] in
+            guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.count = 30
                 self.tableView.reloadData()
@@ -33,6 +35,8 @@ class AutoFooter: UIViewController, UITableViewDataSource, UITableViewDelegate {
             })
         }
         self.tableView.refresh.footer = RefreshFastFooter.makeFastFooter {
+            [weak self] in
+            guard let self = self else { return }
             if self.count >= 200 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                     self.tableView.reloadData()

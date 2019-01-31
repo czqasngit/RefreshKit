@@ -19,12 +19,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RefreshKit-RefreshKit.xcscheme</key>
+		<key>SwiftRefreshKit-RefreshKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RefreshKit.xcscheme</key>
+		<key>SwiftRefreshKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

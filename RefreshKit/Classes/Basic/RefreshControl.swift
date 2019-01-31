@@ -17,10 +17,9 @@ public class RefreshControl: UIView {
 //    var isDragged = false
     var _contentInset = UIEdgeInsets.zero
     deinit {
-        print("RefreshControl deinit")
+        _log("RefreshControl deinit")
     }
     public func addObserve() {
-        print(self.parent.bounds)
         self.parent.observe(forKeyPath: ["contentOffset", "contentSize"]) {[weak self] (keyPath, object, change, context) in
             guard let self = self, let value = change?[NSKeyValueChangeKey.newKey] else { return }
             if keyPath == "contentOffset" {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RefreshKit
+import SwiftRefreshKit
 
 
 class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -29,6 +29,8 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         self.tableView.refresh.header = RefreshFramesHeader.make(frames.map { UIImage(named: $0)! }, 10) {
+            [weak self] in
+            guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 self.count = 10
                 self.tableView.reloadData()
@@ -36,7 +38,8 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tableView.refresh.footer?.resetNoMoreData()
             })
         }
-        self.tableView.refresh.footer = RefreshDefaultFooter.make {
+        self.tableView.refresh.footer = RefreshDefaultFooter.make {[weak self] in
+            guard let self = self else { return }
             if self.count >= 20 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                     self.tableView.reloadData()

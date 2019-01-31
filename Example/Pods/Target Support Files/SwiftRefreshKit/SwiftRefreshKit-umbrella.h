@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double RefreshKitVersionNumber;
-FOUNDATION_EXPORT const unsigned char RefreshKitVersionString[];
+FOUNDATION_EXPORT double SwiftRefreshKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char SwiftRefreshKitVersionString[];
 

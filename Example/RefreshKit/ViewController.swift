@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import RefreshKit
+import SwiftRefreshKit
 
 class MyTableView: UITableView {
     deinit {
-        print("MyTableView deinit")
+        _log("MyTableView deinit")
     }
 }
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -35,9 +35,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.backgroundColor = UIColor.clear
-        let header = RefreshDefaultHeader.make {
-            print("执行刷新")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+        let header = RefreshDefaultHeader.make {[weak self] in
+            guard let self = self else { return }
+            _log("执行刷新")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.count = 10
                 self.tableView.reloadData()
                 self.tableView.refresh.header?.stopRefresh()
@@ -46,24 +47,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         self.tableView.refresh.header = header
-        self.tableView.refresh.footer = RefreshDefaultFooter.make {
+        self.tableView.refresh.footer = RefreshDefaultFooter.make {[weak self] in
+            guard let self = self else { return }
             if self.count >= 20 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
                     self.tableView.reloadData()
                     self.tableView.refresh.footer?.noMoreData()
                 })
             } else {
-                print("执行刷新...")
+                _log("执行刷新...")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
                     self.count += 10
-                    print("..............")
+                    _log("..............")
                     self.tableView.reloadData()
-                    print("刷新...")
+                    _log("刷新...")
                     self.tableView.refresh.footer?.stopRefresh()
                 })
             }
         }
-        self.tableView.refresh.configure(contentInset: UIEdgeInsets.init(top: 250, left: 0, bottom: 0, right: 0), topInsetFix: 250)
+        self.tableView.refresh.configure(contentInset: UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0), topInsetFix: 0)
         
     }
     override func viewDidAppear(_ animated: Bool) {

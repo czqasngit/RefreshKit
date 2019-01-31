@@ -11,12 +11,21 @@ import Foundation
 public typealias KVOBlock = (_ keyPath: String?, _ object: Any?, _ change: [NSKeyValueChangeKey: Any]?, _ context: UnsafeMutableRawPointer?) -> Void
 class KVOObject: NSObject {
     var blocks: [KVOBlock]
+    weak var target: AnyObject?
+    var keyPaths: [String]
     deinit {
-        print("KVOObject deinit")
+        _log("KVOObject deinit")
+        self.keyPaths.forEach {
+            self.target?.removeObserver(self, forKeyPath: $0)
+            _log("移除\(self.target)的\($0)监听")
+        }
+        
     }
     init(target: AnyObject, keyPaths: [String], block: @escaping KVOBlock) {
         self.blocks = [KVOBlock]()
         self.blocks.append(block)
+        self.target = target
+        self.keyPaths = keyPaths
         super.init()
         keyPaths.forEach {
             target.addObserver(self, forKeyPath: $0, options: .new, context: nil)

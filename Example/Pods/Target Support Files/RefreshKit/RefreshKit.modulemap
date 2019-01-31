@@ -1,6 +1,0 @@
-framework module RefreshKit {
-  umbrella header "RefreshKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

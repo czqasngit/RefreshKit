@@ -154,11 +154,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BerryPlant/BerryPlant.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/RefreshKit/RefreshKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftRefreshKit/SwiftRefreshKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BerryPlant/BerryPlant.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/RefreshKit/RefreshKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftRefreshKit/SwiftRefreshKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

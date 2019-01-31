@@ -41,7 +41,7 @@ public class RefreshFramesHeader: RefreshDefaultHeader {
     public override func pulling(percent: Float) {
         super.pulling(percent: percent)
         let index = Int(Float(pullingMaxFrameCount) * percent)
-        print("index: \(index)")
+        _log("index: \(index)")
         self.icon.image = self.images[index]
     }
     override func canRotateicon() -> Bool {

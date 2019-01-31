@@ -1,5 +1,5 @@
 import XCTest
-import RefreshKit
+import SwiftRefreshKit
 
 class Tests: XCTestCase {
     

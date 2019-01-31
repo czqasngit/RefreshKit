@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RefreshKit
+import SwiftRefreshKit
 
 
 class GifViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -24,17 +24,21 @@ class GifViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.automaticallyAdjustsScrollViewInsets = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         let path = Bundle.main.path(forResource: "timg", ofType: "gif")!
-        self.tableView.refresh.header = RefreshAnimateHeader.make(path) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+        self.tableView.refresh.header = RefreshAnimateHeader.make(path) {[weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {[weak self] in
+                guard let self = self else { return }
                 self.count = 10
                 self.tableView.reloadData()
                 self.tableView.refresh.header?.stopRefresh()
                 self.tableView.refresh.footer?.resetNoMoreData()
             })
         }
-        self.tableView.refresh.footer = RefreshDefaultFooter.make {
+        self.tableView.refresh.footer = RefreshDefaultFooter.make {[weak self] in
+            guard let self = self else { return }
             if self.count >= 20 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {[weak self] in
+                    guard let self = self else { return }
                     self.tableView.reloadData()
                     self.tableView.refresh.footer?.noMoreData()
                 })

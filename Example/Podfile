@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'RefreshKit_Example' do
-  pod 'RefreshKit', :path => '../'
+  pod 'SwiftRefreshKit', :path => '../'
   
   target 'RefreshKit_Tests' do
     inherit! :search_paths

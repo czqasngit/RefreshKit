@@ -107,7 +107,7 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         self.activity.isHidden = false
         self.activity.startAnimating()
         self.imageArrow.isHidden = true
-        print("正在刷新...")
+        _log("正在刷新...")
     }
     public override func stopRefresh() {
         guard self.isRefreshing else { return }
@@ -117,7 +117,7 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         self.imageArrow.isHidden = false
         let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
         self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/animate.png")
-        print("停止刷新...")
+        _log("停止刷新...")
     }
     public override func startRefresh() {
         super.startRefresh()
@@ -133,7 +133,7 @@ public class RefreshDefaultFooter: RefreshFooterControl {
     public override func refreshCompleted() {
         super.refreshCompleted()
         self.activity.stopAnimating()
-        print("刷新完成...")
+        _log("刷新完成...")
     }
 }
 
