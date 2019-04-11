@@ -22,16 +22,23 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = true
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        }
+        self.extendedLayoutIncludesOpaqueBars = false
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.edgesForExtendedLayout = .init(rawValue: 0)
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 //        let path = Bundle.main.path(forResource: "loading2", ofType: "png")!
-        let frames = (0..<75).map {
-            return String.init(format: "pull_loading_000%02d", $0)
+        let frames = (1...45).map {
+            return String.init(format: "refresh_%d", $0)
         }
         
-        self.tableView.refresh.header = RefreshFramesHeader.make(frames.map { UIImage(named: $0)! }, 10) {
+        self.tableView.refresh.header = RefreshCustomFramesHeader.makeCustom(frames.map { UIImage(named: $0)! }, 0) {
             [weak self] in
             guard let self = self else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
                 self.count = 10
                 self.tableView.reloadData()
                 self.tableView.refresh.header?.stopRefresh()
@@ -41,7 +48,7 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.refresh.footer = RefreshDefaultFooter.make {[weak self] in
             guard let self = self else { return }
             if self.count >= 20 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
                     self.tableView.reloadData()
                     self.tableView.refresh.footer?.noMoreData()
                 })

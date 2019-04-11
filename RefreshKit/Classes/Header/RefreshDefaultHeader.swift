@@ -45,18 +45,21 @@ public class RefreshDefaultHeader: RefreshHeaderControl {
         super.init(with: refreshingBlock)
         self.setup()
     }
+    public func setupIcon() {
+        self.icon.addConstraint(.init(item: self.icon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.iconSize().width))
+        self.icon.addConstraint(.init(item: self.icon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.iconSize().height))
+        self.addConstraint(.init(item: self.icon, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 0.5, constant: 0))
+        self.addConstraint(.init(item: self.icon, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0))
+    }
     func setup() {
         self.backgroundColor = UIColor.white
         self.labelTime.textColor = UIColor(red: 0x99 / 255.0, green: 0x99 / 255.0, blue: 0x99 / 255.0, alpha: 1.0)
         self.labtlStatus.textColor = self.labelTime.textColor
         
         self.addSubview(self.icon)
-        self.icon.translatesAutoresizingMaskIntoConstraints = false
         self.icon.contentMode = .scaleAspectFit
-        self.icon.addConstraint(.init(item: self.icon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.iconSize().width))
-        self.icon.addConstraint(.init(item: self.icon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.iconSize().height))
-        self.addConstraint(.init(item: self.icon, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 0.5, constant: 0))
-        self.addConstraint(.init(item: self.icon, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0))
+        self.icon.translatesAutoresizingMaskIntoConstraints = false
+        self.setupIcon()
         
         activity.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(activity)

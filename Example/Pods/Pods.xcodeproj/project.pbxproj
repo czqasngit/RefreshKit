@@ -42,6 +42,7 @@
 		BA980B43101C54CBFF6395FB8C7B9EEA /* BerryTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA991BF77B346D496A2D0061D7C920 /* BerryTransaction.swift */; };
 		C15688968AE55DC492EA15CE7F772AF5 /* BerryImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1E874BEB589668D8B7CA52957F8373 /* BerryImageFormat.swift */; };
 		C1894D8B370BC881B9D2281F8F6F07B2 /* RefreshFooterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C34AEC227C87A2D2B242EABC9A014CC /* RefreshFooterControl.swift */; };
+		C32D8590225EDF9000EC62BD /* RefreshCustomFramesHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32D858E225EDF5C00EC62BD /* RefreshCustomFramesHeader.swift */; };
 		CBD2C5AE426BF8C9B37EA6E8E7B1898B /* BerryPlant-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B14EE6FEB57332E71577AE839CA462 /* BerryPlant-dummy.m */; };
 		D6A97F3FA928BDED6B385186983CD6E0 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1282F9042B62D90C85A56E69D11B82 /* Data+Extensions.swift */; };
 		D7769CE6CCE3F263A7C2594C512F98DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E07C5822F88E7E4E2CADC0D4B0AA4A4 /* Foundation.framework */; };
@@ -147,6 +148,7 @@
 		B681D1014702A8C91097D5B19A4635A5 /* Pods-RefreshKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Example-Info.plist"; sourceTree = "<group>"; };
 		B80A15B77F3ECF0BF2195E736F2083ED /* Pods-RefreshKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RefreshKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		BA7942FE8CB94A4F707BFB56A86BFC90 /* BerryAnimateImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BerryAnimateImageView.swift; path = BerryPlant/Classes/ImageDecode/UI/BerryAnimateImageView.swift; sourceTree = "<group>"; };
+		C32D858E225EDF5C00EC62BD /* RefreshCustomFramesHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshCustomFramesHeader.swift; sourceTree = "<group>"; };
 		D08E7F93B8B6F57FE6CCE411B0A6E37A /* Pods-RefreshKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RefreshKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D0C274576DFEFF03231BC9116C3B21B9 /* Pods-RefreshKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RefreshKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		D1EAACD839C2369EBD398C0135BC9A19 /* BerryPlant.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BerryPlant.modulemap; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				1B0FD3C94FA9CDBD6042F69CCC4BE161 /* RefreshAnimateHeader.swift */,
 				1586028E9AD23D972BA02AE5589B58F1 /* RefreshDefaultHeader.swift */,
 				7C0BD25F25E98C10CF220B0F7DC84704 /* RefreshFramesHeader.swift */,
+				C32D858E225EDF5C00EC62BD /* RefreshCustomFramesHeader.swift */,
 				322AA042985E7244E49FFB48776733BD /* RefreshHeaderControl.swift */,
 			);
 			name = Header;
@@ -573,6 +576,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
@@ -644,6 +648,7 @@
 				695088AB23F0037A6F2EF4C09DCF241D /* RefreshEventControl.swift in Sources */,
 				2B630F9D89454C1E81A7934D348B7A3F /* RefreshFastFooter.swift in Sources */,
 				C1894D8B370BC881B9D2281F8F6F07B2 /* RefreshFooterControl.swift in Sources */,
+				C32D8590225EDF9000EC62BD /* RefreshCustomFramesHeader.swift in Sources */,
 				F7C9B6B223030F79130163118EA49608 /* RefreshFramesHeader.swift in Sources */,
 				A1B5C38284871D707E9AACA9D7697F34 /* RefreshHeaderControl.swift in Sources */,
 				EF65DC89F7881A9BC2FE2D47A523BD1B /* RefreshLogger.swift in Sources */,

@@ -21,6 +21,7 @@
 		C30A03AF218ACCC7009CD93E /* loading.apng in Resources */ = {isa = PBXBuildFile; fileRef = C30A03AE218ACCC7009CD93E /* loading.apng */; };
 		C30A03B4218BED3A009CD93E /* AutoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A03B3218BED39009CD93E /* AutoFooter.swift */; };
 		C316634F21C207C200FCC952 /* loading2.png in Resources */ = {isa = PBXBuildFile; fileRef = C316634E21C207C200FCC952 /* loading2.png */; };
+		C32D858D225ED9F700EC62BD /* joker.apng.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D858C225ED9F700EC62BD /* joker.apng.png */; };
 		C38A3FC8218C1A960081537B /* SwiftRefreshKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C38A3FC7218C1A960081537B /* SwiftRefreshKit.podspec */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		C30A03AE218ACCC7009CD93E /* loading.apng */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.apng; sourceTree = "<group>"; };
 		C30A03B3218BED39009CD93E /* AutoFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoFooter.swift; sourceTree = "<group>"; };
 		C316634E21C207C200FCC952 /* loading2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading2.png; sourceTree = "<group>"; };
+		C32D858C225ED9F700EC62BD /* joker.apng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joker.apng.png; sourceTree = "<group>"; };
 		C38A3FC7218C1A960081537B /* SwiftRefreshKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SwiftRefreshKit.podspec; path = ../SwiftRefreshKit.podspec; sourceTree = "<group>"; };
 		D16F65AA318A38DDEA9883CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F751CD0A0F33050F939E07AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		607FACD21AFB9204008FA782 /* Example for RefreshKit */ = {
 			isa = PBXGroup;
 			children = (
+				C32D858C225ED9F700EC62BD /* joker.apng.png */,
 				C316634E21C207C200FCC952 /* loading2.png */,
 				C30A03A8218AA9B2009CD93E /* timg.gif */,
 				C30A03AE218ACCC7009CD93E /* loading.apng */,
@@ -245,6 +248,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -264,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C32D858D225ED9F700EC62BD /* joker.apng.png in Resources */,
 				C30A03AF218ACCC7009CD93E /* loading.apng in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				C316634F21C207C200FCC952 /* loading2.png in Resources */,

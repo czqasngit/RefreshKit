@@ -40,6 +40,7 @@ public class RefreshFramesHeader: RefreshDefaultHeader {
     }
     public override func pulling(percent: Float) {
         super.pulling(percent: percent)
+        guard pullingMaxFrameCount > 0 else { return }
         let index = Int(Float(pullingMaxFrameCount) * percent)
         _log("index: \(index)")
         self.icon.image = self.images[index]
@@ -48,7 +49,8 @@ public class RefreshFramesHeader: RefreshDefaultHeader {
         return false
     }
     override func iconSize() -> CGSize {
-        return .init(width: 50, height: 50)
+        guard let img = self.images.first else { return .zero}
+        return img.size
     }
     public override func refreshing() {
         super.refreshing()
