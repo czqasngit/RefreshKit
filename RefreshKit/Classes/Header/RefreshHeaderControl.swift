@@ -22,6 +22,7 @@ public class RefreshHeaderControl: RefreshEventControl {
             let offsetY = point.y - self.basicOffsetY //- self.topInsetFix
             if (-h / 2)..<0 ~= offsetY {
                 self.updateEvent(.perpare)
+                self.pulling(percent: 0.0)
             } else if (-h)..<(-h / 2) ~= offsetY {
                 let percent = Float((abs(offsetY) - abs(h / 2)) / abs(h / 2))
                 self.updateEvent(.pulling(percent: percent))
