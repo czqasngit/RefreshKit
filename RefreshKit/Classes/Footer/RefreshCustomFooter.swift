@@ -71,6 +71,7 @@ public class RefreshCustomFooter: RefreshFooterControl {
         }
         if let textColor = textColor {
             self.noMoreLabel.textColor = textColor
+            self.refreshImageView.tintColor = textColor
         }
     }
     
