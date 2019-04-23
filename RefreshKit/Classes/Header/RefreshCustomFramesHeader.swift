@@ -35,6 +35,11 @@ public class RefreshCustomFramesHeader: RefreshFramesHeader {
     public override func pulling(percent: Float) {
         super.pulling(percent: percent)
         self.icon.alpha = CGFloat(percent)
+        print("percent: \(percent)")
+    }
+    public override func toggle() {
+        super.toggle()
+        self.icon.alpha = 1.0
     }
 }
 

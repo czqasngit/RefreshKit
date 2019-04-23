@@ -127,8 +127,6 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         self.activity.stopAnimating()
         self.activity.isHidden = true
         self.labtlStatus.text = DraggingEvent.noMoreData
-        
-        
     }
     public override func refreshCompleted() {
         super.refreshCompleted()

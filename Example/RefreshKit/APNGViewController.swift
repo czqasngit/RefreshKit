@@ -17,10 +17,12 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "APNG Animate Test"
+        self.view.backgroundColor = UIColor.gray
         self.view.addSubview(tableView)
-        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 300)
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.backgroundColor = self.view.backgroundColor
         self.automaticallyAdjustsScrollViewInsets = true
         if #available(iOS 11.0, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
@@ -31,11 +33,12 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 //        let path = Bundle.main.path(forResource: "loading2", ofType: "png")!
-        let frames = (1...45).map {
-            return String.init(format: "refresh_%d", $0)
+        let frames = (0...27).map {
+            return String.init(format: "refresh_%02d", $0)
         }
+        let animationsFrames = frames.map { UIImage(named: $0)! }
         
-        self.tableView.refresh.header = RefreshCustomFramesHeader.makeCustom(frames.map { UIImage(named: $0)! }, 0) {
+        self.tableView.refresh.header = RefreshCustomFramesHeader.makeCustom(animationsFrames, 0) {
             [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
@@ -45,11 +48,12 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tableView.refresh.footer?.resetNoMoreData()
             })
         }
-        self.tableView.refresh.footer = RefreshDefaultFooter.make {[weak self] in
+        let footer = RefreshCustomFooter.make(size: animationsFrames[0].size, frames: animationsFrames) {
+            [weak self] in
             guard let self = self else { return }
             if self.count >= 20 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
-                    self.tableView.reloadData()
+                    self.tableView.refresh.footer?.stopRefresh()
                     self.tableView.refresh.footer?.noMoreData()
                 })
             } else {
@@ -60,9 +64,27 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 })
             }
         }
+        footer.configure(font: UIFont.systemFont(ofSize: 18), textColor: UIColor.orange)
+        self.tableView.refresh.footer = footer
+//        self.tableView.refresh.footer = RefreshDefaultFooter.make {[weak self] in
+//            guard let self = self else { return }
+//            if self.count >= 20 {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+//                    self.tableView.refresh.footer?.stopRefresh()
+//                    self.tableView.refresh.footer?.noMoreData()
+//                })
+//            } else {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+//                    self.count += 10
+//                    self.tableView.reloadData()
+//                    self.tableView.refresh.footer?.stopRefresh()
+//                })
+//            }
+//        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        self.tableView.refresh.header?.toggle()
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return count

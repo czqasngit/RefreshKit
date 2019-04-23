@@ -54,6 +54,7 @@ public class RefreshFooterControl: RefreshEventControl {
             } else if (maxOffsetHeight + h / 2)..<(maxOffsetHeight + h) ~= offsetY {
                 self.updateEvent(.pulling(percent: Float((offsetY - h / 2) / (h / 2))))
             } else if offsetY >= maxOffsetHeight + h + 15 {
+                self.updateEvent(.pulling(percent: 1.0))
                 self.updateEvent(.complete)
             }
         } else {

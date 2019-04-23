@@ -28,6 +28,7 @@ public class RefreshHeaderControl: RefreshEventControl {
                 self.pulling(percent: percent)
                 
             } else if -h >= offsetY {
+                self.pulling(percent: 1.0)
                 self.updateEvent(.complete)
             }
         } else {
