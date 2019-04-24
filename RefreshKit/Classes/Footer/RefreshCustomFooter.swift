@@ -65,6 +65,7 @@ public class RefreshCustomFooter: RefreshFooterControl {
     public func configure(frames: [UIImage]? = nil, font: UIFont? = nil, textColor: UIColor? = nil) {
         if let frames = frames {
             self.refreshImageView.animationImages = frames
+            self.refreshImageView.image = frames.first
         }
         if let font = font {
             self.noMoreLabel.font = font

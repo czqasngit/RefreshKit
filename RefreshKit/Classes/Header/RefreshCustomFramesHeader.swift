@@ -43,6 +43,7 @@ public class RefreshCustomFramesHeader: RefreshFramesHeader {
     }
     public func update(images: [UIImage]) {
         self.icon.animationImages = images
+        self.icon.image = images.first
     }
 }
 
