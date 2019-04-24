@@ -41,8 +41,8 @@ public class RefreshCustomFramesHeader: RefreshFramesHeader {
         super.toggle()
         self.icon.alpha = 1.0
     }
-    public func updateIconTintColor(_ color: UIColor) {
-        self.icon.tintColor = color
+    public func update(images: [UIImage]) {
+        self.icon.animationImages = images
     }
 }
 
