@@ -36,8 +36,11 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let frames = (0...27).map {
             return String.init(format: "refresh_%02d", $0)
         }
-        let animationsFrames = frames.map { UIImage(named: $0)! }
-        let header = RefreshCustomFramesHeader.makeCustom(animationsFrames, 0) {
+        let animationsFrames = frames.map { UIImage(named: $0)!.withRenderingMode(.alwaysOriginal) }
+        let h_animationsFrames = (0...27).map {
+            return String.init(format: "refresh_n_%02d", $0)
+            }.map { UIImage(named: $0)!.withRenderingMode(.alwaysOriginal) }
+        let header = RefreshCustomFramesHeader.makeCustom(animationsFrames, h_animationsFrames, 0) {
             [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
@@ -47,8 +50,9 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.tableView.refresh.footer?.resetNoMoreData()
             })
         }
+        
         self.tableView.refresh.header = header
-        let footer = RefreshCustomFooter.make(size: animationsFrames[0].size, frames: animationsFrames) {
+        let footer = RefreshCustomFooter.make(size: animationsFrames[0].size, frames: animationsFrames, highlightedAnimationImages: h_animationsFrames) {
             [weak self] in
             guard let self = self else { return }
             if self.count >= 20 {
@@ -64,7 +68,10 @@ class APNGViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 })
             }
         }
-        footer.configure(font: UIFont.systemFont(ofSize: 18), textColor: UIColor.orange)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            header.update(true)
+            footer.configure(isHighlighted: true, font: UIFont.systemFont(ofSize: 18), textColor: UIColor.orange)
+        }
         self.tableView.refresh.footer = footer
 //        self.tableView.refresh.footer = RefreshDefaultFooter.make {[weak self] in
 //            guard let self = self else { return }

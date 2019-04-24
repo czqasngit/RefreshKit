@@ -36,7 +36,7 @@ public class RefreshFramesHeader: RefreshDefaultHeader {
     }
     public override func eventChanged(_ newEvent: DraggingEvent) {
         super.eventChanged(newEvent)
-        self.icon.image = self.images.last
+        self.icon.image = self.images.first
     }
     public override func pulling(percent: Float) {
         super.pulling(percent: percent)
@@ -44,6 +44,10 @@ public class RefreshFramesHeader: RefreshDefaultHeader {
         let index = Int(Float(pullingMaxFrameCount) * percent)
         _log("index: \(index)")
         self.icon.image = self.images[index]
+    }
+    public override func stopRefresh() {
+        super.stopRefresh()
+        self.icon.image = self.images.first
     }
     override func canRotateicon() -> Bool {
         return false

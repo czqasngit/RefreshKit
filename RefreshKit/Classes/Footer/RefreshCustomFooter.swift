@@ -13,7 +13,7 @@ public class RefreshCustomFooter: RefreshFooterControl {
     private let refreshImageView: UIImageView
     private let noMoreLabel: UILabel
     
-    fileprivate init(block: @escaping RefreshingBlock , size: CGSize, frames: [UIImage]) {
+    fileprivate init(block: @escaping RefreshingBlock , size: CGSize, frames: [UIImage], highlightedAnimationImages: [UIImage]) {
         self.refreshImageView = UIImageView(frame: .zero)
         self.noMoreLabel = UILabel(frame: .zero)
         super.init(with: block);
@@ -25,6 +25,9 @@ public class RefreshCustomFooter: RefreshFooterControl {
         self.refreshImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         self.refreshImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.refreshImageView.animationImages = frames
+        self.refreshImageView.image = frames.first
+        self.refreshImageView.highlightedAnimationImages = highlightedAnimationImages
+        self.refreshImageView.highlightedImage = highlightedAnimationImages.first
         
         self.addSubview(self.noMoreLabel)
         self.noMoreLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -62,11 +65,8 @@ public class RefreshCustomFooter: RefreshFooterControl {
         self.refreshImageView.isHidden = true
     }
     
-    public func configure(frames: [UIImage]? = nil, font: UIFont? = nil, textColor: UIColor? = nil) {
-        if let frames = frames {
-            self.refreshImageView.animationImages = frames
-            self.refreshImageView.image = frames.first
-        }
+    public func configure(isHighlighted: Bool, font: UIFont? = nil, textColor: UIColor? = nil) {
+        self.refreshImageView.isHighlighted = isHighlighted
         if let font = font {
             self.noMoreLabel.font = font
         }
@@ -78,7 +78,7 @@ public class RefreshCustomFooter: RefreshFooterControl {
     
 }
 extension RefreshCustomFooter {
-    static public func make(size: CGSize, frames: [UIImage], block: @escaping RefreshingBlock) -> RefreshCustomFooter {
-        return RefreshCustomFooter.init(block: block, size: size, frames: frames)
+    static public func make(size: CGSize, frames: [UIImage], highlightedAnimationImages: [UIImage], block: @escaping RefreshingBlock) -> RefreshCustomFooter {
+        return RefreshCustomFooter.init(block: block, size: size, frames: frames, highlightedAnimationImages: highlightedAnimationImages)
     }
 }
