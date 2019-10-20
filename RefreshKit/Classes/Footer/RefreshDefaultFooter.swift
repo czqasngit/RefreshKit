@@ -32,7 +32,7 @@ public class RefreshDefaultFooter: RefreshFooterControl {
     var imageArrow: UIImageView
     let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
-    internal override init(with refreshingBlock: @escaping RefreshingBlock) {
+    public override init(with refreshingBlock: @escaping RefreshingBlock) {
         let refreshBundle = Bundle(for: RefreshDefaultHeader.self).path(forResource: "RefreshKit", ofType: "bundle")!
         self.imageArrow = UIImageView(image: UIImage(contentsOfFile: "\(refreshBundle)/arrow.png"))
         super.init(with: refreshingBlock)
