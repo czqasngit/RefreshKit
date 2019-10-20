@@ -92,9 +92,9 @@ public class RefreshDefaultFooter: RefreshFooterControl {
         case .pulling(_):
             self.imageArrow.image = UIImage(contentsOfFile: "\(refreshBundle)/arrow.png")
             self.labtlStatus.text = newEvent.footerText
-            UIView.animate(withDuration: 0.15) {
-                self.imageArrow.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi)
-            }
+//            UIView.animate(withDuration: 0.15) {
+//                self.imageArrow.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi)
+//            }
             self.activity.isHidden = true
             self.imageArrow.isHidden = false
         default:
